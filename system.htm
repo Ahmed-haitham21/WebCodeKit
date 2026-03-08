@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>نظام</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="sysc.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <button class="menu-btn">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+      <div class="logo">WebCodeKit</div>
+
+      <ul class="nav-links">
+        <li><a href="pro.htm">Home</a></li>
+        <li><a href="btn.html">Buttons</a></li>
+        <li><a href="card.htm">Cards</a></li>
+        <li><a href="form.htm">Forms</a></li>
+        <li><a href="#">Systems</a></li>
+        <li><a href="#">About Us</a></li>
+      </ul>
+    </nav>
+
+    <h1 class="main-title">system</h1>
+
+    <div class="systems-container">
+      <!-- النظام الأول -->
+      <div class="system-card">
+        <div class="system-preview" id="preview1">
+          <div class="login-box">
+            <h2>تسجيل الدخول</h2>
+            <form>
+              <input type="text" placeholder="اسم المستخدم" />
+              <input type="password" placeholder="كلمة المرور" />
+              <button type="button">دخول</button>
+            </form>
+          </div>
+        </div>
+        <div class="system-info">
+          <h3>نظام تسجيل دخول</h3>
+          <div class="system-buttons">
+            <button class="btn-open" onclick="openSystem(1)">Open</button>
+            <button class="btn-get" onclick="getCode(1)">Get this code</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- النظام الثاني -->
+      <div class="system-card">
+        <div class="system-preview" id="preview2">
+          <div class="card">
+            <div class="profile-img"></div>
+            <h3>الاسم</h3>
+            <p>وصف قصير</p>
+          </div>
+        </div>
+        <div class="system-info">
+          <h3>نظام البطاقات</h3>
+          <div class="system-buttons">
+            <button class="btn-open" onclick="openSystem(2)">Open</button>
+            <button class="btn-get" onclick="getCode(2)">Get this code</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- النظام الثالث -->
+      <div class="system-card">
+        <div class="system-preview" id="preview3">
+          <div class="menu">
+            <div class="menu-item">الرئيسية</div>
+            <div class="menu-item">من نحن</div>
+            <div class="menu-item">خدماتنا</div>
+            <div class="menu-item">اتصل بنا</div>
+          </div>
+        </div>
+        <div class="system-info">
+          <h3>نظام القائمة</h3>
+          <div class="system-buttons">
+            <button class="btn-open" onclick="openSystem(3)">Open</button>
+            <button class="btn-get" onclick="getCode(3)">Get this code</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- النظام الرابع -->
+      <div class="system-card">
+        <div class="system-preview" id="preview4">
+          <div class="calculator">
+            <input type="text" class="calc-display" />
+            <div class="calc-buttons">
+              <button>7</button><button>8</button><button>9</button
+              ><button>+</button> <button>4</button><button>5</button
+              ><button>6</button><button>-</button> <button>1</button
+              ><button>2</button><button>3</button><button>*</button>
+              <button>C</button><button>0</button><button>=</button
+              ><button>/</button>
+            </div>
+          </div>
+        </div>
+        <div class="system-info">
+          <h3>نظام الآلة الحاسبة</h3>
+          <div class="system-buttons">
+            <button class="btn-open" onclick="openSystem(4)">Open</button>
+            <button class="btn-get" onclick="getCode(4)">Get this code</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- النظام الخامس -->
+      <div class="system-card">
+        <div class="system-preview" id="preview5">
+          <div class="todo-list">
+            <h3>قائمة المهام</h3>
+            <input type="text" placeholder="مهمة جديدة" />
+            <ul>
+              <li>مهمة 1 <span class="delete">×</span></li>
+              <li>مهمة 2 <span class="delete">×</span></li>
+              <li>مهمة 3 <span class="delete">×</span></li>
+            </ul>
+          </div>
+        </div>
+        <div class="system-info">
+          <h3>نظام قائمة المهام</h3>
+          <div class="system-buttons">
+            <button class="btn-open" onclick="openSystem(5)">Open</button>
+            <button class="btn-get" onclick="getCode(5)">Get this code</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- النظام السادس -->
+      <div class="system-card">
+        <div class="system-preview" id="preview6">
+          <div class="form-box">
+            <h3>نموذج اتصال</h3>
+            <input type="text" placeholder="الاسم" />
+            <input type="email" placeholder="البريد" />
+            <textarea placeholder="الرسالة"></textarea>
+            <button>إرسال</button>
+          </div>
+        </div>
+        <div class="system-info">
+          <h3>نظام نموذج الاتصال</h3>
+          <div class="system-buttons">
+            <button class="btn-open" onclick="openSystem(6)">Open</button>
+            <button class="btn-get" onclick="getCode(6)">Get this code</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- النظام السابع -->
+      <div class="system-card">
+        <div class="system-preview" id="preview7">
+          <div class="gallery">
+            <div class="gallery-item"></div>
+            <div class="gallery-item"></div>
+            <div class="gallery-item"></div>
+          </div>
+        </div>
+        <div class="system-info">
+          <h3>نظام معرض الصور</h3>
+          <div class="system-buttons">
+            <button class="btn-open" onclick="openSystem(7)">Open</button>
+            <button class="btn-get" onclick="getCode(7)">Get this code</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- النظام الثامن -->
+      <div class="system-card">
+        <div class="system-preview" id="preview8">
+          <div class="sidebar">
+            <div class="sidebar-item">Dashboard</div>
+            <div class="sidebar-item">Users</div>
+            <div class="sidebar-item">Settings</div>
+          </div>
+        </div>
+        <div class="system-info">
+          <h3>نظام القائمة الجانبية</h3>
+          <div class="system-buttons">
+            <button class="btn-open" onclick="openSystem(8)">Open</button>
+            <button class="btn-get" onclick="getCode(8)">Get this code</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- النظام التاسع -->
+      <div class="system-card">
+        <div class="system-preview" id="preview9">
+          <div class="table-box">
+            <table>
+              <tr>
+                <th>الاسم</th>
+                <th>العمر</th>
+              </tr>
+              <tr>
+                <td>أحمد</td>
+                <td>25</td>
+              </tr>
+              <tr>
+                <td>محمد</td>
+                <td>30</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="system-info">
+          <h3>نظام الجداول</h3>
+          <div class="system-buttons">
+            <button class="btn-open" onclick="openSystem(9)">Open</button>
+            <button class="btn-get" onclick="getCode(9)">Get this code</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- النظام العاشر -->
+      <div class="system-card">
+        <div class="system-preview" id="preview10">
+          <div class="modal-preview">
+            <button>اضغط هنا</button>
+          </div>
+        </div>
+        <div class="system-info">
+          <h3>نظام النافذة المنبثقة</h3>
+          <div class="system-buttons">
+            <button class="btn-open" onclick="openSystem(10)">Open</button>
+            <button class="btn-get" onclick="getCode(10)">Get this code</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- النظام الحادي عشر -->
+      <div class="system-card">
+        <div class="system-preview" id="preview11">
+          <div class="slider">
+            <div class="slide"></div>
+            <div class="slide"></div>
+          </div>
+        </div>
+        <div class="system-info">
+          <h3>نظام السلايدر</h3>
+          <div class="system-buttons">
+            <button class="btn-open" onclick="openSystem(11)">Open</button>
+            <button class="btn-get" onclick="getCode(11)">Get this code</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- النظام الثاني عشر -->
+      <div class="system-card">
+        <div class="system-preview" id="preview12">
+          <div class="pricing">
+            <div class="price-card">
+              <h3>أساسي</h3>
+              <div class="price">$9</div>
+              <p>شهرياً</p>
+            </div>
+          </div>
+        </div>
+        <div class="system-info">
+          <h3>نظام البطاقات التسعيرية</h3>
+          <div class="system-buttons">
+            <button class="btn-open" onclick="openSystem(12)">Open</button>
+            <button class="btn-get" onclick="getCode(12)">Get this code</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- النظام الثالث عشر -->
+      <div class="system-card">
+        <div class="system-preview" id="preview13">
+          <div class="search-box">
+            <input type="text" placeholder="بحث..." />
+            <button><i class="fa-solid fa-search"></i></button>
+          </div>
+        </div>
+        <div class="system-info">
+          <h3>نظام البحث</h3>
+          <div class="system-buttons">
+            <button class="btn-open" onclick="openSystem(13)">Open</button>
+            <button class="btn-get" onclick="getCode(13)">Get this code</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- النظام الرابع عشر -->
+      <div class="system-card">
+        <div class="system-preview" id="preview14">
+          <div class="weather-widget">
+            <div class="weather-icon"><i class="fa-solid fa-sun"></i></div>
+            <div class="weather-temp">25°</div>
+            <div class="weather-city">القاهرة</div>
+          </div>
+        </div>
+        <div class="system-info">
+          <h3>نظام الطقس</h3>
+          <div class="system-buttons">
+            <button class="btn-open" onclick="openSystem(14)">Open</button>
+            <button class="btn-get" onclick="getCode(14)">Get this code</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- النظام الخامس عشر -->
+      <div class="system-card">
+        <div class="system-preview" id="preview15">
+          <div class="clock-widget">
+            <div class="time">12:00</div>
+            <div class="date">الثلاثاء</div>
+          </div>
+        </div>
+        <div class="system-info">
+          <h3>نظام الساعة</h3>
+          <div class="system-buttons">
+            <button class="btn-open" onclick="openSystem(15)">Open</button>
+            <button class="btn-get" onclick="getCode(15)">Get this code</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- النظام السادس عشر -->
+      <div class="system-card">
+        <div class="system-preview" id="preview16">
+          <div class="progress-bar">
+            <div class="progress" style="width: 75%"></div>
+          </div>
+        </div>
+        <div class="system-info">
+          <h3>نظام شريط التقدم</h3>
+          <div class="system-buttons">
+            <button class="btn-open" onclick="openSystem(16)">Open</button>
+            <button class="btn-get" onclick="getCode(16)">Get this code</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- النظام السابع عشر -->
+      <div class="system-card">
+        <div class="system-preview" id="preview17">
+          <div class="rating">
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">☆</span>
+          </div>
+        </div>
+        <div class="system-info">
+          <h3>نظام التقييم</h3>
+          <div class="system-buttons">
+            <button class="btn-open" onclick="openSystem(17)">Open</button>
+            <button class="btn-get" onclick="getCode(17)">Get this code</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- النظام الثامن عشر -->
+      <div class="system-card">
+        <div class="system-preview" id="preview18">
+          <div class="notification">
+            <i class="fa-solid fa-bell"></i>
+            <span class="badge">3</span>
+          </div>
+        </div>
+        <div class="system-info">
+          <h3>نظام الإشعارات</h3>
+          <div class="system-buttons">
+            <button class="btn-open" onclick="openSystem(18)">Open</button>
+            <button class="btn-get" onclick="getCode(18)">Get this code</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- النظام التاسع عشر -->
+      <div class="system-card">
+        <div class="system-preview" id="preview19">
+          <div class="tabs-example">
+            <div class="tab">تبويب 1</div>
+            <div class="tab active">تبويب 2</div>
+          </div>
+        </div>
+        <div class="system-info">
+          <h3>نظام التبويبات</h3>
+          <div class="system-buttons">
+            <button class="btn-open" onclick="openSystem(19)">Open</button>
+            <button class="btn-get" onclick="getCode(19)">Get this code</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- النظام العشرين -->
+      <div class="system-card">
+        <div class="system-preview" id="preview20">
+          <div class="breadcrumbs">
+            <a href="#">الرئيسية</a>
+            <span>/</span>
+            <a href="#">المنتجات</a>
+            <span>/</span>
+            <span>التفاصيل</span>
+          </div>
+        </div>
+        <div class="system-info">
+          <h3>نظام المسارات</h3>
+          <div class="system-buttons">
+            <button class="btn-open" onclick="openSystem(20)">Open</button>
+            <button class="btn-get" onclick="getCode(20)">Get this code</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- النظام الحادي والعشرين -->
+      <div class="system-card">
+        <div class="system-preview" id="preview21">
+          <div class="tooltip-example">
+            <button class="tooltip-btn">مرر الماوس</button>
+          </div>
+        </div>
+        <div class="system-info">
+          <h3>نظام التلميحات</h3>
+          <div class="system-buttons">
+            <button class="btn-open" onclick="openSystem(21)">Open</button>
+            <button class="btn-get" onclick="getCode(21)">Get this code</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- النظام الثاني والعشرين -->
+      <div class="system-card">
+        <div class="system-preview" id="preview22">
+          <div class="social-icons">
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+        <div class="system-info">
+          <h3>نظام التواصل الاجتماعي</h3>
+          <div class="system-buttons">
+            <button class="btn-open" onclick="openSystem(22)">Open</button>
+            <button class="btn-get" onclick="getCode(22)">Get this code</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- النظام الثالث والعشرين -->
+      <div class="system-card">
+        <div class="system-preview" id="preview23">
+          <div class="stepper">
+            <div class="step active">1</div>
+            <div class="step active">2</div>
+            <div class="step">3</div>
+          </div>
+        </div>
+        <div class="system-info">
+          <h3>نظام الخطوات</h3>
+          <div class="system-buttons">
+            <button class="btn-open" onclick="openSystem(23)">Open</button>
+            <button class="btn-get" onclick="getCode(23)">Get this code</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- النظام الرابع والعشرين -->
+      <div class="system-card">
+        <div class="system-preview" id="preview24">
+          <div class="avatar-group">
+            <div class="avatar">أ</div>
+            <div class="avatar">م</div>
+            <div class="avatar">ع</div>
+          </div>
+        </div>
+        <div class="system-info">
+          <h3>نظام الصور الشخصية</h3>
+          <div class="system-buttons">
+            <button class="btn-open" onclick="openSystem(24)">Open</button>
+            <button class="btn-get" onclick="getCode(24)">Get this code</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- نافذة العرض -->
+    <div class="modal" id="viewModal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div id="systemView"></div>
+      </div>
+    </div>
+
+    <!-- نافذة الكود -->
+    <div class="code-modal" id="codeModal">
+      <div class="code-content">
+        <span class="close" onclick="closeCodeModal()">&times;</span>
+        <h2 id="codeTitle">كود النظام</h2>
+        <div class="code-tabs">
+          <button class="tab-btn active" onclick="showCode('html')">
+            HTML
+          </button>
+          <button class="tab-btn" onclick="showCode('css')">CSS</button>
+          <button class="tab-btn" onclick="showCode('js')">JavaScript</button>
+        </div>
+        <div class="code-display">
+          <pre id="codeOutput"></pre>
+          <button class="copy-btn" onclick="copyCode()">نسخ الكود</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="sysj.js"></script>
+  </body>
+</html>
