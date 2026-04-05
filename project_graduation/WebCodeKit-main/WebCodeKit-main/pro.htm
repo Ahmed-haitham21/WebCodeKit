@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WebCodeKit</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="color.css" />
+    <style>
+        /* ========== RESPONSIVE NAVBAR STYLES ========== */
+        .navbar {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            height: 70px !important;
+            background: rgba(15, 20, 25, 0.95) !important;
+            backdrop-filter: blur(10px) !important;
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            padding: 0 30px !important;
+            z-index: 1000 !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+        }
+
+        .logo {
+            font-size: 24px !important;
+            font-weight: 700 !important;
+            color: #fff !important;
+            letter-spacing: 2px !important;
+            text-decoration: none !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 10px !important;
+            margin-right: 0 !important;
+        }
+
+        .logo i {
+            color: #667eea !important;
+            font-size: 28px !important;
+        }
+
+        .logo-hamburger-wrapper {
+            display: flex !important;
+            align-items: center !important;
+            gap: 16px !important;
+        }
+
+        .nav-container {
+            display: flex !important;
+            align-items: center !important;
+            gap: 40px !important;
+        }
+
+        .nav-links {
+            display: flex !important;
+            list-style: none !important;
+            gap: 30px !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        .nav-links li a {
+            color: #fff !important;
+            text-decoration: none !important;
+            font-size: 16px !important;
+            font-weight: 500 !important;
+            transition: all 0.3s ease !important;
+            position: relative !important;
+            padding: 8px 0 !important;
+        }
+
+        .nav-links li a::after {
+            content: \"\" !important;
+            position: absolute !important;
+            bottom: 0 !important;
+            left: 0 !important;
+            width: 0 !important;
+            height: 2px !important;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+            transition: width 0.3s ease !important;
+        }
+
+        .nav-links li a:hover {
+            color: #667eea !important;
+        }
+
+        .nav-links li a:hover::after {
+            width: 100% !important;
+        }
+
+        .hamburger {
+            display: flex !important;
+            flex-direction: column !important;
+            cursor: pointer !important;
+            gap: 6px !important;
+            background: none !important;
+            border: none !important;
+            padding: 8px !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .hamburger span {
+            width: 25px !important;
+            height: 3px !important;
+            background: #fff !important;
+            border-radius: 2px !important;
+            transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1) !important;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(10px, 10px) !important;
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0 !important;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px) !important;
+        }
+
+        .mobile-menu {
+            display: none !important;
+            position: fixed !important;
+            top: 70px !important;
+            left: 0 !important;
+            right: 0 !important;
+            background: rgba(15, 20, 25, 0.98) !important;
+            backdrop-filter: blur(10px) !important;
+            flex-direction: column !important;
+            padding: 20px 0 !important;
+            gap: 0 !important;
+            max-height: calc(100vh - 70px) !important;
+            overflow-y: auto !important;
+            animation: slideDown 0.3s ease forwards !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+            z-index: 999 !important;
+        }
+
+        .mobile-menu.active {
+            display: flex !important;
+        }
+
+        .mobile-menu li {
+            list-style: none !important;
+        }
+
+        .mobile-menu li a {
+            display: block !important;
+            padding: 15px 30px !important;
+            color: #fff !important;
+            text-decoration: none !important;
+            font-size: 18px !important;
+            font-weight: 500 !important;
+            transition: all 0.3s ease !important;
+            border-left: 4px solid transparent !important;
+            position: relative !important;
+        }
+
+        .mobile-menu li a:hover {
+            background: rgba(102, 126, 234, 0.1) !important;
+            border-left-color: #667eea !important;
+            color: #667eea !important;
+            padding-left: 40px !important;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex !important;
+            }
+
+            .navbar {
+                padding: 0 20px !important;
+            }
+
+            .logo {
+                font-size: 20px !important;
+            }
+
+            .logo i {
+                font-size: 24px !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar {
+                height: 60px !important;
+                padding: 0 15px !important;
+            }
+
+            .logo {
+                font-size: 18px !important;
+                gap: 8px !important;
+            }
+
+            .logo i {
+                font-size: 20px !important;
+            }
+
+            .hamburger {
+                gap: 5px !important;
+            }
+
+            .hamburger span {
+                width: 22px !important;
+                height: 2.5px !important;
+            }
+        }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo-hamburger-wrapper">
+        <button class="hamburger" id="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <a href="pro.htm" class="logo">
+          <i class="fas fa-code"></i>
+          WebCodeKit
+        </a>
+      </div>
+
+      <ul class="nav-links">
+          <li><a href="pro.htm">Home</a></li>
+          <li><a href="btn.html">Buttons</a></li>
+          <li><a href="card.htm">Cards</a></li>
+          <li><a href="form.htm">Forms</a></li>
+          <li><a href="system.htm">Systems</a></li>
+          <li><a href="responsive-nav.html">About Us</a></li>
+        </ul>
+    </nav>
+
+    <ul class="mobile-menu" id="mobileMenu">
+      <li><a href="pro.htm">Home</a></li>
+      <li><a href="btn.html">Buttons</a></li>
+      <li><a href="card.htm">Cards</a></li>
+      <li><a href="form.htm">Forms</a></li>
+      <li><a href="system.htm">Systems</a></li>
+      <li><a href="responsive-nav.html">About Us</a></li>
+    </ul>
+
+    <!-- Theme Toggle Button - Outside Navbar -->
+    <button
+      class="theme-btn"
+      onclick="toggleTheme()"
+      title="Toggle Light/Dark Mode">
+      <i class="fa-regular fa-sun" id="theme-icon"></i>
+    </button>
+
+    <div class="body1">
+      <h3>Just For you</h3>
+      <h2>What is the purpose of the website?</h2>
+      <span>Your Partner in Professional Web Development</span>
+    </div>
+
+    <script>
+      // Responsive Hamburger Menu - All Pages
+      document.addEventListener("DOMContentLoaded", function() {
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuLinks = document.querySelectorAll('.mobile-menu a');
+
+        // Toggle mobile menu
+        if (hamburger) {
+          hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+          });
+        }
+
+        // Close menu when clicking on a link
+        menuLinks.forEach(link => {
+          link.addEventListener('click', function() {
+            if (hamburger) hamburger.classList.remove('active');
+            if (mobileMenu) mobileMenu.classList.remove('active');
+          });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+          const navbar = document.querySelector('.navbar');
+          if (navbar && !navbar.contains(event.target) && mobileMenu && !mobileMenu.contains(event.target)) {
+            if (hamburger) hamburger.classList.remove('active');
+            if (mobileMenu) mobileMenu.classList.remove('active');
+          }
+        });
+
+        // Close menu on window resize
+        window.addEventListener('resize', function() {
+          if (window.innerWidth > 768) {
+            if (hamburger) hamburger.classList.remove('active');
+            if (mobileMenu) mobileMenu.classList.remove('active');
+          }
+        });
+      });
+
+      // Theme toggle function
+      function toggleTheme() {
+        const html = document.documentElement;
+        const icon = document.getElementById("theme-icon");
+        const isDark = html.getAttribute("data-theme") === "dark";
+
+        if (isDark) {
+          html.setAttribute("data-theme", "light");
+          icon.className = "fa-regular fa-moon";
+        } else {
+          html.setAttribute("data-theme", "dark");
+          icon.className = "fa-regular fa-sun";
+        }
+      }
+    </script>
+    <script src="lega.js"></script>
+  </body>
+</html>

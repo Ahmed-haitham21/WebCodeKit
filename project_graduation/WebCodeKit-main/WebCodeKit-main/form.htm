@@ -1,0 +1,788 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>نماذج Forms - 24 نموذج مختلف</title>
+    <link rel="stylesheet" href="fom.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+        /* ========== NAVBAR STYLES ========== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 70px;
+            background: rgba(15, 20, 25, 0.95);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 30px;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 2px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: #667eea;
+            font-size: 28px;
+        }
+
+        .logo-hamburger-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 8px 0;
+        }
+
+        .nav-links li a::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links li a:hover {
+            color: #667eea;
+        }
+
+        .nav-links li a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 6px;
+            background: none;
+            border: none;
+            padding: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #fff;
+            border-radius: 2px;
+            transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(10px, 10px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 70px;
+            left: 0;
+            right: 0;
+            background: rgba(15, 20, 25, 0.98);
+            backdrop-filter: blur(10px);
+            flex-direction: column;
+            padding: 20px 0;
+            gap: 0;
+            max-height: calc(100vh - 70px);
+            overflow-y: auto;
+            animation: slideDown 0.3s ease forwards;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 999;
+        }
+
+        .mobile-menu.active {
+            display: flex;
+        }
+
+        .mobile-menu li {
+            list-style: none;
+        }
+
+        .mobile-menu li a {
+            display: block;
+            padding: 15px 30px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+            position: relative;
+        }
+
+        .mobile-menu li a:hover {
+            background: rgba(102, 126, 234, 0.1);
+            border-left-color: #667eea;
+            color: #667eea;
+            padding-left: 40px;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .navbar {
+                padding: 0 20px;
+            }
+
+            .logo {
+                font-size: 20px;
+            }
+
+            .logo i {
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar {
+                height: 60px;
+                padding: 0 15px;
+            }
+
+            .logo {
+                font-size: 18px;
+                gap: 8px;
+            }
+
+            .logo i {
+                font-size: 20px;
+            }
+
+            .hamburger {
+                gap: 5px;
+            }
+
+            .hamburger span {
+                width: 22px;
+                height: 2.5px;
+            }
+        }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="logo-hamburger-wrapper">
+        <button class="hamburger" id="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <a href="pro.htm" class="logo">
+          <i class="fas fa-code"></i>
+          WebCodeKit
+        </a>
+      </div>
+
+      <ul class="nav-links">
+          <li><a href="pro.htm">Home</a></li>
+          <li><a href="btn.html">Buttons</a></li>
+          <li><a href="card.htm">Cards</a></li>
+          <li><a href="form.htm">Forms</a></li>
+          <li><a href="system.htm">Systems</a></li>
+          <li><a href="responsive-nav.html">About Us</a></li>
+        </ul>
+    </nav>
+
+    <ul class="mobile-menu" id="mobileMenu">
+      <li><a href="pro.htm">Home</a></li>
+      <li><a href="btn.html">Buttons</a></li>
+      <li><a href="card.htm">Cards</a></li>
+      <li><a href="form.htm">Forms</a></li>
+      <li><a href="system.htm">Systems</a></li>
+      <li><a href="responsive-nav.html">About Us</a></li>
+    </ul>
+
+    <!-- Navigation -->
+    <div class="pagination">
+      <button class="page-btn active" data-page="1">1</button>
+      <button class="page-btn" data-page="2">2</button>
+      <button class="page-btn" data-page="3">3</button>
+      <button class="page-btn" data-page="4">4</button>
+      <button class="page-btn" data-page="5">5</button>
+      <button class="page-btn" data-page="6">6</button>
+    </div>
+
+    <!-- Forms Container -->
+    <div class="forms-container">
+      <!-- Page 1: Forms 1-4 -->
+      <div class="page active" data-page="1">
+        <div class="form-card">
+          <div class="form-preview login-preview">
+            <h3>تسجيل الدخول</h3>
+            <form class="mini-form login-form">
+              <input type="text" placeholder="اسم المستخدم" readonly />
+              <input type="password" placeholder="كلمة المرور" readonly />
+              <button type="button" class="preview-btn">دخول</button>
+            </form>
+          </div>
+          <div class="form-actions">
+            <button class="open-btn" data-form="login">فتح</button>
+            <button class="get-code-btn" data-form="login">
+              احصل على الكود
+            </button>
+          </div>
+        </div>
+
+        <div class="form-card">
+          <div class="form-preview register-preview">
+            <h3>تسجيل جديد</h3>
+            <form class="mini-form register-form">
+              <input type="text" placeholder="الاسم" readonly />
+              <input type="email" placeholder="البريد الإلكتروني" readonly />
+              <input type="password" placeholder="كلمة المرور" readonly />
+              <button type="button" class="preview-btn">تسجيل</button>
+            </form>
+          </div>
+          <div class="form-actions">
+            <button class="open-btn" data-form="register">فتح</button>
+            <button class="get-code-btn" data-form="register">
+              احصل على الكود
+            </button>
+          </div>
+        </div>
+
+        <div class="form-card">
+          <div class="form-preview contact-preview">
+            <h3>تواصل معنا</h3>
+            <form class="mini-form contact-form">
+              <input type="text" placeholder="الاسم" readonly />
+              <input type="email" placeholder="البريد الإلكتروني" readonly />
+              <textarea placeholder="الرسالة" readonly></textarea>
+            </form>
+          </div>
+          <div class="form-actions">
+            <button class="open-btn" data-form="contact">فتح</button>
+            <button class="get-code-btn" data-form="contact">
+              احصل على الكود
+            </button>
+          </div>
+        </div>
+
+        <div class="form-card">
+          <div class="form-preview search-preview">
+            <h3>بحث</h3>
+            <form class="mini-form search-form">
+              <input type="search" placeholder="ابحث هنا..." readonly />
+              <button type="button" class="preview-btn">بحث</button>
+            </form>
+          </div>
+          <div class="form-actions">
+            <button class="open-btn" data-form="search">فتح</button>
+            <button class="get-code-btn" data-form="search">
+              احصل على الكود
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Page 2: Forms 5-8 -->
+      <div class="page" data-page="2">
+        <div class="form-card">
+          <div class="form-preview survey-preview">
+            <h3>استطلاع رأي</h3>
+            <form class="mini-form survey-form">
+              <input type="text" placeholder="اسمك" readonly />
+              <select readonly>
+                <option>اختر...</option>
+              </select>
+              <textarea placeholder="رأيك مهم لنا" readonly></textarea>
+              <button type="button" class="preview-btn">إرسال</button>
+            </form>
+          </div>
+          <div class="form-actions">
+            <button class="open-btn" data-form="survey">فتح</button>
+            <button class="get-code-btn" data-form="survey">
+              احصل على الكود
+            </button>
+          </div>
+        </div>
+
+        <div class="form-card">
+          <div class="form-preview checkout-preview">
+            <h3>الدفع</h3>
+            <form class="mini-form checkout-form">
+              <input type="text" placeholder="اسم البطاقة" readonly />
+              <input type="text" placeholder="رقم البطاقة" readonly />
+              <div class="mini-row">
+                <input type="text" placeholder="تاريخ" readonly />
+                <input type="text" placeholder="cvv" readonly />
+              </div>
+              <button type="button" class="preview-btn">دفع</button>
+            </form>
+          </div>
+          <div class="form-actions">
+            <button class="open-btn" data-form="checkout">فتح</button>
+            <button class="get-code-btn" data-form="checkout">
+              احصل على الكود
+            </button>
+          </div>
+        </div>
+
+        <div class="form-card">
+          <div class="form-preview subscription-preview">
+            <h3>اشتراك</h3>
+            <form class="mini-form subscription-form">
+              <input type="email" placeholder="بريدك الإلكتروني" readonly />
+              <button type="button" class="preview-btn">اشتراك</button>
+            </form>
+          </div>
+          <div class="form-actions">
+            <button class="open-btn" data-form="subscription">فتح</button>
+            <button class="get-code-btn" data-form="subscription">
+              احصل على الكود
+            </button>
+          </div>
+        </div>
+
+        <div class="form-card">
+          <div class="form-preview profile-preview">
+            <h3>الملف الشخصي</h3>
+            <form class="mini-form profile-form">
+              <input type="text" placeholder="الاسم" readonly />
+              <input type="email" placeholder="البريد" readonly />
+              <input type="tel" placeholder="الهاتف" readonly />
+              <button type="button" class="preview-btn">حفظ</button>
+            </form>
+          </div>
+          <div class="form-actions">
+            <button class="open-btn" data-form="profile">فتح</button>
+            <button class="get-code-btn" data-form="profile">
+              احصل على الكود
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Page 3: Forms 9-12 -->
+      <div class="page" data-page="3">
+        <div class="form-card">
+          <div class="form-preview settings-preview">
+            <h3>الإعدادات</h3>
+            <form class="mini-form settings-form">
+              <label><input type="checkbox" disabled /> الوضع الليلي</label>
+              <label><input type="checkbox" disabled /> الإشعارات</label>
+              <label><input type="checkbox" disabled /> اللغة</label>
+              <button type="button" class="preview-btn">حفظ</button>
+            </form>
+          </div>
+          <div class="form-actions">
+            <button class="open-btn" data-form="settings">فتح</button>
+            <button class="get-code-btn" data-form="settings">
+              احصل على الكود
+            </button>
+          </div>
+        </div>
+
+        <div class="form-card">
+          <div class="form-preview booking-preview">
+            <h3>حجز</h3>
+            <form class="mini-form booking-form">
+              <input type="text" placeholder="الاسم" readonly />
+              <input type="date" readonly />
+              <input type="number" placeholder="عدد الأشخاص" readonly />
+              <button type="button" class="preview-btn">حجز</button>
+            </form>
+          </div>
+          <div class="form-actions">
+            <button class="open-btn" data-form="booking">فتح</button>
+            <button class="get-code-btn" data-form="booking">
+              احصل على الكود
+            </button>
+          </div>
+        </div>
+
+        <div class="form-card">
+          <div class="form-preview newsletter-preview">
+            <h3>النشرة البريدية</h3>
+            <form class="mini-form newsletter-form">
+              <input type="email" placeholder="بريدك الإلكتروني" readonly />
+              <select readonly>
+                <option>اختر الفئة...</option>
+              </select>
+              <button type="button" class="preview-btn">إرسال</button>
+            </form>
+          </div>
+          <div class="form-actions">
+            <button class="open-btn" data-form="newsletter">فتح</button>
+            <button class="get-code-btn" data-form="newsletter">
+              احصل على الكود
+            </button>
+          </div>
+        </div>
+
+        <div class="form-card">
+          <div class="form-preview comment-preview">
+            <h3>تعليق</h3>
+            <form class="mini-form comment-form">
+              <input type="text" placeholder="اسمك" readonly />
+              <textarea placeholder="اكتب تعليقك" readonly></textarea>
+              <button type="button" class="preview-btn">إرسال</button>
+            </form>
+          </div>
+          <div class="form-actions">
+            <button class="open-btn" data-form="comment">فتح</button>
+            <button class="get-code-btn" data-form="comment">
+              احصل على الكود
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Page 4: Forms 13-16 -->
+      <div class="page" data-page="4">
+        <div class="form-card">
+          <div class="form-preview reset-preview">
+            <h3>استعادة كلمة المرور</h3>
+            <form class="mini-form reset-form">
+              <input type="email" placeholder="بريدك الإلكتروني" readonly />
+              <button type="button" class="preview-btn">إرسال</button>
+            </form>
+          </div>
+          <div class="form-actions">
+            <button class="open-btn" data-form="reset">فتح</button>
+            <button class="get-code-btn" data-form="reset">
+              احصل على الكود
+            </button>
+          </div>
+        </div>
+
+        <div class="form-card">
+          <div class="form-preview upload-preview">
+            <h3>رفع ملف</h3>
+            <form class="mini-form upload-form">
+              <input type="file" readonly />
+              <button type="button" class="preview-btn">رفع</button>
+            </form>
+          </div>
+          <div class="form-actions">
+            <button class="open-btn" data-form="upload">فتح</button>
+            <button class="get-code-btn" data-form="upload">
+              احصل على الكود
+            </button>
+          </div>
+        </div>
+
+        <div class="form-card">
+          <div class="form-preview rating-preview">
+            <h3>تقييم</h3>
+            <form class="mini-form rating-form">
+              <input type="text" placeholder="اسمك" readonly />
+              <label><input type="radio" disabled /> ممتاز</label>
+              <label><input type="radio" disabled /> جيد</label>
+              <button type="button" class="preview-btn">إرسال</button>
+            </form>
+          </div>
+          <div class="form-actions">
+            <button class="open-btn" data-form="rating">فتح</button>
+            <button class="get-code-btn" data-form="rating">
+              احصل على الكود
+            </button>
+          </div>
+        </div>
+
+        <div class="form-card">
+          <div class="form-preview date-preview">
+            <h3>اختر التاريخ</h3>
+            <form class="mini-form date-form">
+              <input type="date" readonly />
+              <input type="text" placeholder="الحدث" readonly />
+              <button type="button" class="preview-btn">تأكيد</button>
+            </form>
+          </div>
+          <div class="form-actions">
+            <button class="open-btn" data-form="date">فتح</button>
+            <button class="get-code-btn" data-form="date">
+              احصل على الكود
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Page 5: Forms 17-20 -->
+      <div class="page" data-page="5">
+        <div class="form-card">
+          <div class="form-preview dropdown-preview">
+            <h3>اختيار من قائمة</h3>
+            <form class="mini-form dropdown-form">
+              <input type="text" placeholder="اسمك" readonly />
+              <select readonly>
+                <option>اختر...</option>
+                <option>الخيار 1</option>
+                <option>الخيار 2</option>
+              </select>
+              <button type="button" class="preview-btn">تأكيد</button>
+            </form>
+          </div>
+          <div class="form-actions">
+            <button class="open-btn" data-form="dropdown">فتح</button>
+            <button class="get-code-btn" data-form="dropdown">
+              احصل على الكود
+            </button>
+          </div>
+        </div>
+
+        <div class="form-card">
+          <div class="form-preview download-preview">
+            <h3>تحميل</h3>
+            <form class="mini-form download-form">
+              <input type="text" placeholder="رابط الملف" readonly />
+              <button type="button" class="preview-btn">تحميل</button>
+            </form>
+          </div>
+          <div class="form-actions">
+            <button class="open-btn" data-form="download">فتح</button>
+            <button class="get-code-btn" data-form="download">
+              احصل على الكود
+            </button>
+          </div>
+        </div>
+
+        <div class="form-card">
+          <div class="form-preview quiz-preview">
+            <h3>اختبار</h3>
+            <form class="mini-form quiz-form">
+              <input type="text" placeholder="اسمك" readonly />
+              <label><input type="radio" disabled /> أ</label>
+              <label><input type="radio" disabled /> ب</label>
+              <label><input type="radio" disabled /> ج</label>
+              <button type="button" class="preview-btn">إرسال</button>
+            </form>
+          </div>
+          <div class="form-actions">
+            <button class="open-btn" data-form="quiz">فتح</button>
+            <button class="get-code-btn" data-form="quiz">
+              احصل على الكود
+            </button>
+          </div>
+        </div>
+
+        <div class="form-card">
+          <div class="form-preview filter-preview">
+            <h3>تصفية</h3>
+            <form class="mini-form filter-form">
+              <select readonly>
+                <option>كل الفئات</option>
+              </select>
+              <select readonly>
+                <option>السعر</option>
+              </select>
+              <button type="button" class="preview-btn">تصفية</button>
+            </form>
+          </div>
+          <div class="form-actions">
+            <button class="open-btn" data-form="filter">فتح</button>
+            <button class="get-code-btn" data-form="filter">
+              احصل على الكود
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Page 6: Forms 21-24 -->
+      <div class="page" data-page="6">
+        <div class="form-card">
+          <div class="form-preview calc-preview">
+            <h3>حاسبة</h3>
+            <form class="mini-form calc-form">
+              <input type="number" placeholder="الرقم الأول" readonly />
+              <input type="number" placeholder="الرقم الثاني" readonly />
+              <button type="button" class="preview-btn">احسب</button>
+            </form>
+          </div>
+          <div class="form-actions">
+            <button class="open-btn" data-form="calc">فتح</button>
+            <button class="get-code-btn" data-form="calc">
+              احصل على الكود
+            </button>
+          </div>
+        </div>
+
+        <div class="form-card">
+          <div class="form-preview color-preview">
+            <h3>اختر لون</h3>
+            <form class="mini-form color-form">
+              <input type="text" placeholder="اسمك" readonly />
+              <input type="color" value="#ff0000" readonly />
+              <button type="button" class="preview-btn">حفظ</button>
+            </form>
+          </div>
+          <div class="form-actions">
+            <button class="open-btn" data-form="color">فتح</button>
+            <button class="get-code-btn" data-form="color">
+              احصل على الكود
+            </button>
+          </div>
+        </div>
+
+        <div class="form-card">
+          <div class="form-preview time-preview">
+            <h3>اختر الوقت</h3>
+            <form class="mini-form time-form">
+              <input type="text" placeholder="الموعد" readonly />
+              <input type="time" readonly />
+              <button type="button" class="preview-btn">تأكيد</button>
+            </form>
+          </div>
+          <div class="form-actions">
+            <button class="open-btn" data-form="time">فتح</button>
+            <button class="get-code-btn" data-form="time">
+              احصل على الكود
+            </button>
+          </div>
+        </div>
+
+        <div class="form-card">
+          <div class="form-preview range-preview">
+            <h3>مستوى</h3>
+            <form class="mini-form range-form">
+              <input type="text" placeholder="اسمك" readonly />
+              <input type="range" min="1" max="100" value="50" readonly />
+              <button type="button" class="preview-btn">إرسال</button>
+            </form>
+          </div>
+          <div class="form-actions">
+            <button class="open-btn" data-form="range">فتح</button>
+            <button class="get-code-btn" data-form="range">
+              احصل على الكود
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal for Full Form -->
+    <div class="modal" id="formModal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <div id="modalFormContainer"></div>
+      </div>
+    </div>
+
+    <!-- Code Display Modal -->
+    <div class="modal" id="codeModal">
+      <div class="modal-content code-modal">
+        <span class="close-code-modal">&times;</span>
+        <div class="code-tabs">
+          <button class="code-tab active" data-type="html">HTML</button>
+          <button class="code-tab" data-type="css">CSS</button>
+          <button class="code-tab" data-type="js">JavaScript</button>
+        </div>
+        <pre id="codeDisplay"><code></code></pre>
+        <button class="copy-btn" id="copyCode">نسخ الكود</button>
+      </div>
+    </div>
+
+    <script>
+      // Responsive Hamburger Menu - All Pages
+      document.addEventListener("DOMContentLoaded", function() {
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuLinks = document.querySelectorAll('.mobile-menu a');
+
+        // Toggle mobile menu
+        if (hamburger) {
+          hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+          });
+        }
+
+        // Close menu when clicking on a link
+        menuLinks.forEach(link => {
+          link.addEventListener('click', function() {
+            if (hamburger) hamburger.classList.remove('active');
+            if (mobileMenu) mobileMenu.classList.remove('active');
+          });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+          const navbar = document.querySelector('.navbar');
+          if (navbar && !navbar.contains(event.target) && mobileMenu && !mobileMenu.contains(event.target)) {
+            if (hamburger) hamburger.classList.remove('active');
+            if (mobileMenu) mobileMenu.classList.remove('active');
+          }
+        });
+
+        // Close menu on window resize
+        window.addEventListener('resize', function() {
+          if (window.innerWidth > 768) {
+            if (hamburger) hamburger.classList.remove('active');
+            if (mobileMenu) mobileMenu.classList.remove('active');
+          }
+        });
+      });
+    </script>
+    <script src="for.js"></script>
+  </body>
+</html>

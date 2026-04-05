@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Navigation Bar - WebCodeKit</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* ========== RESET & GLOBAL STYLES ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f1419 0%, #1a1a2e 50%, #16213e 100%);
+            color: #fff;
+            min-height: 100vh;
+            padding-top: 70px; /* Space for fixed navbar */
+        }
+
+        /* ========== NAVBAR STYLES ========== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 70px;
+            background: rgba(15, 20, 25, 0.95);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 30px;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Logo */
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 2px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: #667eea;
+            font-size: 28px;
+        }
+
+        /* Navigation Links Container */
+        .nav-container {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        /* Navigation Links */
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 8px 0;
+        }
+
+        .nav-links li a::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links li a:hover {
+            color: #667eea;
+        }
+
+        .nav-links li a:hover::after {
+            width: 100%;
+        }
+
+        /* Hamburger Menu Button */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 6px;
+            background: none;
+            border: none;
+            padding: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #fff;
+            border-radius: 2px;
+            transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        /* Hamburger Active State */
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(10px, 10px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        /* ========== MOBILE MENU STYLES ========== */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 70px;
+            left: 0;
+            right: 0;
+            background: rgba(15, 20, 25, 0.98);
+            backdrop-filter: blur(10px);
+            flex-direction: column;
+            padding: 20px 0;
+            gap: 0;
+            max-height: calc(100vh - 70px);
+            overflow-y: auto;
+            animation: slideDown 0.3s ease forwards;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 999;
+        }
+
+        .mobile-menu.active {
+            display: flex;
+        }
+
+        .mobile-menu li {
+            list-style: none;
+        }
+
+        .mobile-menu li a {
+            display: block;
+            padding: 15px 30px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+            position: relative;
+        }
+
+        .mobile-menu li a:hover {
+            background: rgba(102, 126, 234, 0.1);
+            border-left-color: #667eea;
+            color: #667eea;
+            padding-left: 40px;
+        }
+
+        /* ========== ANIMATIONS ========== */
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ========== CONTENT SECTIONS ========== */
+        .section {
+            padding: 80px 30px;
+            min-height: calc(100vh - 70px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .section:nth-child(1) {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+        }
+
+        .section:nth-child(2) {
+            background: linear-gradient(135deg, rgba(118, 75, 162, 0.1) 0%, rgba(245, 101, 101, 0.1) 100%);
+        }
+
+        .section:nth-child(3) {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+        }
+
+        .section:nth-child(4) {
+            background: linear-gradient(135deg, rgba(245, 101, 101, 0.1) 0%, rgba(102, 126, 234, 0.1) 100%);
+        }
+
+        .section:nth-child(5) {
+            background: linear-gradient(135deg, rgba(118, 75, 162, 0.1) 0%, rgba(245, 101, 101, 0.1) 100%);
+        }
+
+        .section:nth-child(6) {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+        }
+
+        .section-content {
+            max-width: 800px;
+        }
+
+        .section h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section p {
+            font-size: 1.1rem;
+            color: #ccc;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .btn-demo {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .btn-demo:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            border-color: #667eea;
+        }
+
+        /* ========== SCROLLBAR STYLES ========== */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+        }
+
+        /* ========== RESPONSIVE DESIGN ========== */
+        @media (max-width: 768px) {
+            /* Hide desktop menu */
+            .nav-links {
+                display: none;
+            }
+
+            /* Show hamburger */
+            .hamburger {
+                display: flex;
+            }
+
+            .navbar {
+                padding: 0 20px;
+            }
+
+            .logo {
+                font-size: 20px;
+            }
+
+            .logo i {
+                font-size: 24px;
+            }
+
+            .section {
+                padding: 60px 20px;
+                min-height: auto;
+            }
+
+            .section h1 {
+                font-size: 2rem;
+            }
+
+            .section p {
+                font-size: 1rem;
+            }
+
+            .mobile-menu {
+                position: absolute;
+                top: 70px;
+            }
+
+            .mobile-menu li a {
+                padding: 12px 20px;
+                font-size: 16px;
+            }
+
+            .mobile-menu li a:hover {
+                padding-left: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar {
+                height: 60px;
+                padding: 0 15px;
+            }
+
+            .logo {
+                font-size: 18px;
+                gap: 8px;
+            }
+
+            .logo i {
+                font-size: 20px;
+            }
+
+            .hamburger {
+                gap: 5px;
+            }
+
+            .hamburger span {
+                width: 22px;
+                height: 2.5px;
+            }
+
+            body {
+                padding-top: 60px;
+            }
+
+            .section h1 {
+                font-size: 1.5rem;
+            }
+
+            .section p {
+                font-size: 0.95rem;
+            }
+
+            .btn-demo {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ========== NAVBAR ========== -->
+    <nav class="navbar">
+        <a href="#home" class="logo">
+            <i class="fas fa-code"></i>
+            WebCodeKit
+        </a>
+
+        <div class="nav-container">
+            <!-- Desktop Menu -->
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#buttons">Buttons</a></li>
+                <li><a href="#cards">Cards</a></li>
+                <li><a href="#forms">Forms</a></li>
+                <li><a href="#systems">Systems</a></li>
+                <li><a href="#about">About Us</a></li>
+            </ul>
+
+            <!-- Hamburger Menu Button -->
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ========== MOBILE MENU ========== -->
+    <ul class="mobile-menu" id="mobileMenu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#buttons">Buttons</a></li>
+        <li><a href="#cards">Cards</a></li>
+        <li><a href="#forms">Forms</a></li>
+        <li><a href="#systems">Systems</a></li>
+        <li><a href="#about">About Us</a></li>
+    </ul>
+
+    <!-- ========== CONTENT SECTIONS ========== -->
+    <section id="home" class="section">
+        <div class="section-content">
+            <h1>Welcome to WebCodeKit</h1>
+            <p>Your ultimate platform for professional web components, buttons, cards, forms, and systems. Build stunning and responsive interfaces with our collection of modern UI elements.</p>
+            <a href="#buttons" class="btn-demo">Explore Components</a>
+        </div>
+    </section>
+
+    <section id="buttons" class="section">
+        <div class="section-content">
+            <h1>100 Professional Buttons</h1>
+            <p>Discover our extensive collection of modern, animated buttons with smooth transitions and hover effects. Perfect for any web project.</p>
+            <a href="btn.html" class="btn-demo">View Buttons</a>
+        </div>
+    </section>
+
+    <section id="cards" class="section">
+        <div class="section-content">
+            <h1>40 Card Designs</h1>
+            <p>Professional card designs with smooth animations and modern styling. Ideal for showcasing products, services, or content.</p>
+            <a href="card.htm" class="btn-demo">View Cards</a>
+        </div>
+    </section>
+
+    <section id="forms" class="section">
+        <div class="section-content">
+            <h1>24 Form Templates</h1>
+            <p>Beautiful and functional form designs with validation, animations, and accessibility features built-in.</p>
+            <a href="form.htm" class="btn-demo">View Forms</a>
+        </div>
+    </section>
+
+    <section id="systems" class="section">
+        <div class="section-content">
+            <h1>Complete Systems</h1>
+            <p>Full-featured system components combining buttons, cards, and forms into cohesive design patterns.</p>
+            <a href="system.htm" class="btn-demo">View Systems</a>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="section-content">
+            <h1>About WebCodeKit</h1>
+            <p>WebCodeKit is a comprehensive collection of responsive, modern UI components designed to speed up your web development process. Built with clean code, accessibility in mind, and mobile-first approach.</p>
+            <a href="#home" class="btn-demo">Back to Home</a>
+        </div>
+    </section>
+
+    <!-- ========== JAVASCRIPT ========== -->
+    <script>
+        // Get elements
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuLinks = document.querySelectorAll('.mobile-menu a');
+
+        // Toggle mobile menu
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Close menu when clicking on a link
+        menuLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const navbar = document.querySelector('.navbar');
+            if (!navbar.contains(event.target) && !mobileMenu.contains(event.target)) {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            }
+        });
+
+        // Close menu on window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
