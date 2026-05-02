@@ -1,0 +1,536 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>40 Card تسويقي مختلف</title>
+    <link rel="stylesheet" href="crd.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Tajawal:wght@400;500;700&display=swap"
+      rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="navbar.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="logo-hamburger-wrapper">
+        <button class="hamburger" id="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <a href="pro.htm" class="logo">
+          <i class="fas fa-code"></i>
+          WebCodeKit
+        </a>
+      </div>
+
+      <ul class="nav-links">
+        <li><a href="pro.htm">Home</a></li>
+        <li><a href="btn.html">Buttons</a></li>
+        <li><a href="card.htm">Cards</a></li>
+        <li><a href="form.htm">Forms</a></li>
+        <li><a href="system.htm">Systems</a></li>
+        <li><a href="responsive-nav.html">About Us</a></li>
+      </ul>
+    </nav>
+
+    <ul class="mobile-menu" id="mobileMenu">
+      <li><a href="pro.htm">Home</a></li>
+      <li><a href="btn.html">Buttons</a></li>
+      <li><a href="card.htm">Cards</a></li>
+      <li><a href="form.htm">Forms</a></li>
+      <li><a href="system.htm">Systems</a></li>
+      <li><a href="responsive-nav.html">About Us</a></li>
+    </ul>
+
+    <div class="container">
+      <!-- Card 1 - بسيط أنيق -->
+      <div class="card card-1">
+        <div class="card-icon"><i class="fas fa-rocket"></i></div>
+        <h3>🚀 إطلاق جديد</h3>
+        <p>اكتشف أحدث منتجاتنا المتميزة التي ستغير طريقة عملك</p>
+        <button>اطلب الآن</button>
+        <button class="get-code-btn" onclick="showCode(1)">
+          Get This Code
+        </button>
+      </div>
+
+      <!-- Card 2 - دائري مع حدود -->
+      <div class="card card-2">
+        <div class="card-icon"><i class="fas fa-gift"></i></div>
+        <h3>🎁 عرض خاص</h3>
+        <p>خصم 50% على جميع المنتجات لمدة أيام محدودة</p>
+        <button>احصل على العرض</button>
+        <button class="get-code-btn" onclick="showCode(2)">
+          Get This Code
+        </button>
+      </div>
+
+      <!-- Card 3 - زاوية مائلة -->
+      <div class="card card-3">
+        <div class="card-badge">جديد</div>
+        <div class="card-icon"><i class="fas fa-star"></i></div>
+        <h3>⭐ منتج مميز</h3>
+        <p>الأكثر مبيعاً هذا الشهر - جودة استثنائية</p>
+        <button>تصفح المزيد</button>
+        <button class="get-code-btn" onclick="showCode(3)">
+          Get This Code
+        </button>
+      </div>
+
+      <!-- Card 4 - داكن مع توهج -->
+      <div class="card card-4">
+        <div class="card-icon"><i class="fas fa-crown"></i></div>
+        <h3>👑 باقة VIP</h3>
+        <p>العضوية الحصرية واحصل على مميزات لا نهائية</p>
+        <button>اشترك الآن</button>
+        <button class="get-code-btn" onclick="showCode(4)">
+          Get This Code
+        </button>
+      </div>
+
+      <!-- Card 5 - شفاف -->
+      <div class="card card-5">
+        <div class="card-icon"><i class="fas fa-leaf"></i></div>
+        <h3>🌿 صديق للبيئة</h3>
+        <p>منتجات طبيعية 100% آمنة على صحتك والبيئة</p>
+        <button>اعرف المزيد</button>
+        <button class="get-code-btn" onclick="showCode(5)">
+          Get This Code
+        </button>
+      </div>
+
+      <!-- Card 6 - مع شريط -->
+      <div class="card card-6">
+        <div class="card-stripe"></div>
+        <div class="card-icon"><i class="fas fa-bolt"></i></div>
+        <h3>⚡ سرعة البرق</h3>
+        <p>توصيل خلال ساعة واحدة - طلبك في بابك</p>
+        <button>اطلب سريعاً</button>
+        <button class="get-code-btn" onclick="showCode(6)">
+          Get This Code
+        </button>
+      </div>
+
+      <!-- Card 7 - إطار مزدوج -->
+      <div class="card card-7">
+        <div class="card-icon"><i class="fas fa-shield-alt"></i></div>
+        <h3>🛡️ أمان تام</h3>
+        <p>ضمان 5 سنوات على جميع منتجاتنا - اطمئن</p>
+        <button>شاهد الضمان</button>
+        <button class="get-code-btn" onclick="showCode(7)">
+          Get This Code
+        </button>
+      </div>
+
+      <!-- Card 8 - نيون -->
+      <div class="card card-8">
+        <div class="card-icon"><i class="fas fa-magic"></i></div>
+        <h3>✨ سحر خاص</h3>
+        <p>تجربة تسوق سحرية مع عروضنا الحصرية</p>
+        <button>ابدأ التجربة</button>
+        <button class="get-code-btn" onclick="showCode(8)">
+          Get This Code
+        </button>
+      </div>
+
+      <!-- Card 9 - طبقي -->
+      <div class="card card-9">
+        <div class="card-top">
+          <div class="card-icon"><i class="fas fa-fire"></i></div>
+        </div>
+        <div class="card-bottom">
+          <h3>🔥 الأكثر شعبية</h3>
+          <p>انضم لألف عميل سعيد - رضاهم يتحدث</p>
+          <button>انضم لهم</button>
+        </div>
+        <button class="get-code-btn" onclick="showCode(9)">
+          Get This Code
+        </button>
+      </div>
+
+      <!-- Card 10 - صورة كاملة -->
+      <div class="card card-10">
+        <div class="card-content">
+          <div class="card-icon"><i class="fas fa-gem"></i></div>
+          <h3>💎 قيمة استثنائية</h3>
+          <p>جودة عالية بسعر لا يُصدق - وفر أكثر</p>
+          <button>تسوق الآن</button>
+        </div>
+        <button class="get-code-btn" onclick="showCode(10)">
+          Get This Code
+        </button>
+      </div>
+
+      <!-- Card 11 - خطافي -->
+      <div class="card card-11">
+        <div class="card-icon"><i class="fas fa-percent"></i></div>
+        <h3>💰 وفّر 70%</h3>
+        <p>أفضل الأسعار في السوق - لا تُضيع الفرصة</p>
+        <button>وفر الآن</button>
+        <button class="get-code-btn" onclick="showCode(11)">
+          Get This Code
+        </button>
+      </div>
+
+      <!-- Card 12 - موسمي -->
+      <div class="card card-12">
+        <div class="card-icon"><i class="fas fa-snowflake"></i></div>
+        <h3>❄️ عرض الشتاء</h3>
+        <p>منتجات الشتاء بأسعار مخفضة جداً</p>
+        <button>تصفح الشتاء</button>
+        <button class="get-code-btn" onclick="showCode(12)">
+          Get This Code
+        </button>
+      </div>
+
+      <!-- Card 13 - تفاعلي -->
+      <div class="card card-13">
+        <div class="card-icon"><i class="fas fa-headset"></i></div>
+        <h3>🎧 دعم 24/7</h3>
+        <p>فريق دعم متاح على مدار الساعة لخدمتك</p>
+        <button>تواصل معنا</button>
+        <button class="get-code-btn" onclick="showCode(13)">
+          Get This Code
+        </button>
+      </div>
+
+      <!-- Card 14 - عائم -->
+      <div class="card card-14">
+        <div class="card-icon"><i class="fas fa-plane"></i></div>
+        <h3>✈️ شحن مجاني</h3>
+        <p>شحن مجاني لجميع الطلبات فوق 200 ريال</p>
+        <button>اطلب مجاناً</button>
+        <button class="get-code-btn" onclick="showCode(14)">
+          Get This Code
+        </button>
+      </div>
+
+      <!-- Card 15 - ثلاثي الأبعاد -->
+      <div class="card card-15">
+        <div class="card-icon"><i class="fas fa-box-open"></i></div>
+        <h3>📦 package مجاني</h3>
+        <p>هدايا مجانية مع كل طلب - مفاجآت تنتظرك</p>
+        <button>احصل على هديتك</button>
+        <button class="get-code-btn" onclick="showCode(15)">
+          Get This Code
+        </button>
+      </div>
+
+      <!-- Card 16 - متدرج -->
+      <div class="card card-16">
+        <div class="card-icon"><i class="fas fa-heart"></i></div>
+        <h3>❤️ مصنوع بحب</h3>
+        <p>كل منتج يصنع بأقصى درجات الدقة والعناية</p>
+        <button>اعرف قصتنا</button>
+        <button class="get-code-btn" onclick="showCode(16)">
+          Get This Code
+        </button>
+      </div>
+
+      <!-- Card 17 - حديث -->
+      <div class="card card-17">
+        <div class="card-icon"><i class="fas fa-laptop-code"></i></div>
+        <h3>💻 تقنية حديثة</h3>
+        <p>أحدث التقنيات والابتكارات في منتجنا</p>
+        <button>استكشف التقنية</button>
+        <button class="get-code-btn" onclick="showCode(17)">
+          Get This Code
+        </button>
+      </div>
+
+      <!-- Card 18 - دائري كامل -->
+      <div class="card card-18">
+        <div class="card-icon"><i class="fas fa-award"></i></div>
+        <h3>🏆 الجائزة الذهبية</h3>
+        <p>حاصل على جائزة أفضل منتج لعام 2024</p>
+        <button>شاهد الجائزة</button>
+        <button class="get-code-btn" onclick="showCode(18)">
+          Get This Code
+        </button>
+      </div>
+
+      <!-- Card 19 - زجاجي -->
+      <div class="card card-19">
+        <div class="card-icon"><i class="fas fa-infinity"></i></div>
+        <h3>♾️ غير محدود</h3>
+        <p>استخدام غير محدود - اشترك مرة واستمتع للأبد</p>
+        <button>ابدأ الآن</button>
+        <button class="get-code-btn" onclick="showCode(19)">
+          Get This Code
+        </button>
+      </div>
+
+      <!-- Card 20 - أخير مع لمسة -->
+      <div class="card card-20">
+        <div class="card-content">
+          <div class="card-icon"><i class="fas fa-sparkles"></i></div>
+          <h3>🌟 لمسة سحرية</h3>
+          <p>أضف لمسة سحرية لحياتك مع منتجاتنا الفريدة</p>
+          <button>اطلب الآن</button>
+        </div>
+        <button class="get-code-btn" onclick="showCode(20)">
+          Get This Code
+        </button>
+      </div>
+
+      <!-- Card 21 - أزرق داكن -->
+      <div class="card card-21">
+        <div class="card-icon"><i class="fas fa-water"></i></div>
+        <h3>🌊 عمق الأناقة</h3>
+        <p>تصميم فريد يجمع بين الأناقة والعملية</p>
+        <button>استكشف الآن</button>
+        <button class="get-code-btn" onclick="showCode(21)">
+          Get This Code
+        </button>
+      </div>
+
+      <!-- Card 22 - برتقالي ناري -->
+      <div class="card card-22">
+        <div class="card-icon"><i class="fas fa-sun"></i></div>
+        <h3>☀️ يوم مشع</h3>
+        <p>أضف إشراقة يوم جديد مع منتجاتنا المميزة</p>
+        <button>اعرف المزيد</button>
+        <button class="get-code-btn" onclick="showCode(22)">
+          Get This Code
+        </button>
+      </div>
+
+      <!-- Card 23 - أخضر زمردي -->
+      <div class="card card-23">
+        <div class="card-icon"><i class="fas fa-dragon"></i></div>
+        <h3>🐉 قوة الخضرة</h3>
+        <p>منتجات خضراء ذات جودة استثنائية</p>
+        <button>اطلب الآن</button>
+        <button class="get-code-btn" onclick="showCode(23)">
+          Get This Code
+        </button>
+      </div>
+
+      <!-- Card 24 - بنفسجي ملكي -->
+      <div class="card card-24">
+        <div class="card-icon"><i class="fas fa-chess-king"></i></div>
+        <h3>♚ الملكي</h3>
+        <p>منتجات حصرية للطبقة المميزة</p>
+        <button>انضم للصفوة</button>
+        <button class="get-code-btn" onclick="showCode(24)">
+          Get This Code
+        </button>
+      </div>
+
+      <!-- Card 25 - وردي شيري -->
+      <div class="card card-25">
+        <div class="card-icon"><i class="fas fa-heartbeat"></i></div>
+        <h3>💗 حب الحياة</h3>
+        <p>منتجات ملهمة تجعلك تحب حياتك أكثر</p>
+        <button>اكتشف الحب</button>
+        <button class="get-code-btn" onclick="showCode(25)">
+          Get This Code
+        </button>
+      </div>
+
+      <!-- Card 26 - رمادي أنيق -->
+      <div class="card card-26">
+        <div class="card-icon"><i class="fas fa-city"></i></div>
+        <h3>🏙️ أناقة المدينة</h3>
+        <p>تصميم عصري يناسب أذواق المدينة</p>
+        <button>تصفح الآن</button>
+        <button class="get-code-btn" onclick="showCode(26)">
+          Get This Code
+        </button>
+      </div>
+
+      <!-- Card 27 - ذهبي داكن -->
+      <div class="card card-27">
+        <div class="card-icon"><i class="fas fa-treasure-chest"></i></div>
+        <h3>💼 كنز ثمين</h3>
+        <p>منتجات ثمينة تستحق كل ريال</p>
+        <button>احصل على الكنز</button>
+        <button class="get-code-btn" onclick="showCode(27)">
+          Get This Code
+        </button>
+      </div>
+
+      <!-- Card 28 - فضي لامع -->
+      <div class="card card-28">
+        <div class="card-icon"><i class="fas fa-meteor"></i></div>
+        <h3>☄️ لمعان الفضاء</h3>
+        <p>تألق مع منتجاتنا الفضية المميزة</p>
+        <button>أطلق العنان</button>
+        <button class="get-code-btn" onclick="showCode(28)">
+          Get This Code
+        </button>
+      </div>
+
+      <!-- Card 29 - أحمر داكن -->
+      <div class="card card-29">
+        <div class="card-icon"><i class="fas fa-dragon"></i></div>
+        <h3>🐲 قوة التنين</h3>
+        <p>منتجات قوية كقوة التنين</p>
+        <button>اشعر بالقوة</button>
+        <button class="get-code-btn" onclick="showCode(29)">
+          Get This Code
+        </button>
+      </div>
+
+      <!-- Card 30 - سماوي -->
+      <div class="card card-30">
+        <div class="card-icon"><i class="fas fa-cloud-sun"></i></div>
+        <h3>☁️ يوم غائم</h3>
+        <p>برودة الجو مع منتجاتنا المنعشة</p>
+        <button>استمتع بالبرد</button>
+        <button class="get-code-btn" onclick="showCode(30)">
+          Get This Code
+        </button>
+      </div>
+
+      <!-- Card 31 - بني دافئ -->
+      <div class="card card-31">
+        <div class="card-icon"><i class="fas fa-mug-hot"></i></div>
+        <h3>☕ دفء القهوة</h3>
+        <p>شعور دافئ مع منتجاتنا المميزة</p>
+        <button>استمتع بالدفء</button>
+        <button class="get-code-btn" onclick="showCode(31)">
+          Get This Code
+        </button>
+      </div>
+
+      <!-- Card 32 - أصفر لامع -->
+      <div class="card card-32">
+        <div class="card-icon"><i class="fas fa-lightbulb"></i></div>
+        <h3>💡 فكرة مشرقة</h3>
+        <p>أفكار مبتكرة تنير طريقك</p>
+        <button>أضاء فكرتك</button>
+        <button class="get-code-btn" onclick="showCode(32)">
+          Get This Code
+        </button>
+      </div>
+
+      <!-- Card 33 - indigo -->
+      <div class="card card-33">
+        <div class="card-icon"><i class="fas fa-hat-wizard"></i></div>
+        <h3>🧙 سحر السحرة</h3>
+        <p>منتجات سحرية ستأخذ أنفاسك</p>
+        <button>جرب السحر</button>
+        <button class="get-code-btn" onclick="showCode(33)">
+          Get This Code
+        </button>
+      </div>
+
+      <!-- Card 34 - تيل -->
+      <div class="card card-34">
+        <div class="card-icon"><i class="fas fa-coffee"></i></div>
+        <h3>🫖 وقت الشاي</h3>
+        <p>استرخِ واستمتع بلحظات هادئة</p>
+        <button>استمتع الآن</button>
+        <button class="get-code-btn" onclick="showCode(34)">
+          Get This Code
+        </button>
+      </div>
+
+      <!-- Card 35 - مرجاني -->
+      <div class="card card-35">
+        <div class="card-icon"><i class="fas fa-coral"></i></div>
+        <h3>🪸 شاطئ المرجان</h3>
+        <p>انعم بجمال البحار مع منتجاتنا</p>
+        <button>الغوص الآن</button>
+        <button class="get-code-btn" onclick="showCode(35)">
+          Get This Code
+        </button>
+      </div>
+
+      <!-- Card 36 - لافندر -->
+      <div class="card card-36">
+        <div class="card-icon"><i class="fas fa-spa"></i></div>
+        <h3>💆 لحظة استرخاء</h3>
+        <p>منتجات العناية التي تستحقها</p>
+        <button>اهتم بنفسك</button>
+        <button class="get-code-btn" onclick="showCode(36)">
+          Get This Code
+        </button>
+      </div>
+
+      <!-- Card 37 - باذنجاني -->
+      <div class="card card-37">
+        <div class="card-icon"><i class="fas fa-moon"></i></div>
+        <h3>🌙 ضوء القمر</h3>
+        <p>أناقة الليل في أحلى صورها</p>
+        <button>استمتع بالليل</button>
+        <button class="get-code-btn" onclick="showCode(37)">
+          Get This Code
+        </button>
+      </div>
+
+      <!-- Card 38 - تركواز -->
+      <div class="card card-38">
+        <div class="card-icon"><i class="fas fa-umbrella-beach"></i></div>
+        <h3>🏖️ اجازة الأحلام</h3>
+        <p>منتجات العطلة التي تحتاجها</p>
+        <button>احجز الآن</button>
+        <button class="get-code-btn" onclick="showCode(38)">
+          Get This Code
+        </button>
+      </div>
+
+      <!-- Card 39 -十条纹 -->
+      <div class="card card-39">
+        <div class="card-icon"><i class="fas fa-fish"></i></div>
+        <h3>🐠 بحر الحياة</h3>
+        <p>عالم من الخيارات تحت البحار</p>
+        <button>استكشف البحار</button>
+        <button class="get-code-btn" onclick="showCode(39)">
+          Get This Code
+        </button>
+      </div>
+
+      <!-- Card 40 - نهائي -->
+      <div class="card card-40">
+        <div class="card-icon"><i class="fas fa-party-horn"></i></div>
+        <h3>🎉 نهاية سعيدة</h3>
+        <p>اختتم تجربتك بأفضل شكل</p>
+        <button>احتفل الآن</button>
+        <button class="get-code-btn" onclick="showCode(40)">
+          Get This Code
+        </button>
+      </div>
+    </div>
+
+    <!-- Modal for showing code -->
+    <div class="modal" id="codeModal">
+      <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <h2 id="modalTitle">Card Code</h2>
+
+        <div class="code-section">
+          <h3>HTML Code</h3>
+          <div class="code-container">
+            <pre id="htmlCode"></pre>
+            <button class="copy-btn" onclick="copyToClipboard('htmlCode')">
+              Copy HTML
+            </button>
+          </div>
+        </div>
+
+        <div class="code-section">
+          <h3>CSS Code</h3>
+          <div class="code-container">
+            <pre id="cssCode"></pre>
+            <button class="copy-btn" onclick="copyToClipboard('cssCode')">
+              Copy CSS
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="navbar.js"></script>
+    <script src="cad.js"></script>
+  </body>
+</html>
