@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Favorites - WebCodeKit</title>
+    <meta
+      name="description"
+      content="View all the buttons, cards, forms, and systems you've saved as favorites on WebCodeKit." />
+    <meta property="og:title" content="My Favorites - WebCodeKit" />
+    <meta
+      property="og:description"
+      content="View all the components you've saved as favorites on WebCodeKit." />
+    <meta property="og:type" content="website" />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="navbar.min.css" />
+    <link rel="stylesheet" href="theme-variables.min.css" />
+    <link rel="stylesheet" href="favorites-page.min.css" />
+</head>
+  <body>
+        <!-- ===== NAVBAR ===== -->
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+      <div class="logo-hamburger-wrapper">
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <a href="index.html" class="logo">
+          <i class="fas fa-code" aria-hidden="true"></i>
+          WebCodeKit
+        </a>
+      </div>
+
+      <ul class="nav-links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="buttons.html">Buttons</a></li>
+        <li><a href="cards.html">Cards</a></li>
+        <li><a href="forms.html">Forms</a></li>
+        <li><a href="systems.html">Systems</a></li>
+        <li><a href="smart-ai.html" class="nav-ai-link">AI Assistant</a></li>
+        <li><a href="about.html">About Us</a></li>
+      </ul>
+
+      <a href="favorites.html" class="nav-fav-link active" title="My Favorites" aria-label="My Favorites">
+        <i class="fas fa-heart" aria-hidden="true"></i>
+      </a>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <ul class="mobile-menu" id="mobileMenu" role="list" aria-label="Mobile navigation">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="buttons.html">Buttons</a></li>
+      <li><a href="cards.html">Cards</a></li>
+      <li><a href="forms.html">Forms</a></li>
+      <li><a href="systems.html">Systems</a></li>
+      <li><a href="smart-ai.html" class="mobile-ai-link">AI Assistant</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li class="menu-divider"></li>
+      <li><a href="favorites.html" class="mobile-fav-link"><i class="fas fa-heart"></i> My Favorites</a></li>
+    </ul>
+
+    <!-- Theme Toggle -->
+    <button class="theme-btn" onclick="toggleTheme()" title="Toggle Light/Dark Mode" aria-label="Toggle theme">
+      <i class="fa-regular fa-sun" id="theme-icon" aria-hidden="true"></i>
+    </button>
+
+<!-- Hero -->
+    <section class="favorites-hero">
+      <h1><i class="fas fa-heart"></i> My Favorites</h1>
+      <p>
+        Everything you've saved, all in one place. Favorites are stored
+        only in this browser.
+      </p>
+    </section>
+
+    <div class="favorites-container" id="favoritesContainer">
+      <!-- Populated by favorites-page.js -->
+    </div>
+
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-col">
+          <h3>UI Library</h3>
+          <p>
+            We provide ready-to-use buttons, cards, forms, and customizable
+            systems to help developers build faster and better.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h3>Components</h3>
+          <ul>
+            <li><a href="buttons.html">Buttons</a></li>
+            <li><a href="cards.html">Cards</a></li>
+            <li><a href="forms.html">Forms</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Systems</h3>
+          <ul>
+            <li><a href="systems.html">Custom System</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Follow Us</h3>
+          <div class="social-icons">
+            <a href="https://github.com/Ahmed-haitham21"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 UI Library. All rights reserved.</p>
+      </div>
+    </footer>
+    <script src="theme-toggle.js" defer></script>
+    <script src="navbar.js" defer></script>
+    <script src="favorites-data.js" defer></script>
+    <script src="favorites-page.js" defer></script>
+    <script src="favorites.js" defer></script>
+</body>
+</html>

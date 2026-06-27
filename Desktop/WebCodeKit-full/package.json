@@ -1,0 +1,17 @@
+{
+  "name": "webcodekit-ai-server",
+  "version": "1.0.0",
+  "description": "Secure backend proxy for WebCodeKit Smart AI assistant. Keeps the Anthropic API key on the server.",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express-rate-limit": "^7.4.0"
+  }
+}
