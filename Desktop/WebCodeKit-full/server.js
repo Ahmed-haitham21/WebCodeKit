@@ -163,8 +163,10 @@ app.get("/api/health", (req, res) => {
   res.json({ status: "ok", model: MODEL });
 });
 
-app.listen(PORT, () => {
-  console.log(`✅ السيرفر شغال على http://localhost:${PORT}`);
-  console.log(`🌐 الموقع نفسه: http://localhost:${PORT}/index.html`);
-  console.log(`🤖 المساعد الذكي: http://localhost:${PORT}/smart-ai.html`);
-});
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`Server running on ${PORT}`);
+  });
+}
+
+module.exports = app;
