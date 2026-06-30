@@ -1,0 +1,989 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#667eea" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Component Kits | WebCodeKit</title>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="navbar.min.css" />
+    <link rel="stylesheet" href="search.css" />
+    <link rel="stylesheet" href="theme-variables.min.css" />
+    <link rel="stylesheet" href="modal-shared.css" />
+    <script>
+      document.documentElement.setAttribute(
+        "data-theme",
+        localStorage.getItem("theme") || "dark",
+      );
+    </script>
+    <style>
+      body {
+        padding-top: 68px;
+      }
+
+      .kits-page {
+        padding: 40px 24px 60px;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .kits-header {
+        text-align: center;
+        margin-bottom: 28px;
+      }
+
+      .kits-header h1 {
+        font-size: clamp(28px, 5vw, 48px);
+        font-weight: 800;
+        color: var(--logo-color);
+        margin-bottom: 12px;
+      }
+
+      .kits-header h1 span {
+        background: linear-gradient(135deg, #667eea, #a855f7);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .kits-header p {
+        color: var(--bg-card-text);
+        font-size: 16px;
+        opacity: 0.75;
+        max-width: 580px;
+        margin: 0 auto;
+      }
+
+      .category-filters {
+        max-width: 1200px;
+        margin: 0 auto 28px;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .category-btn {
+        padding: 10px 18px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.06);
+        color: var(--logo-color);
+        font-weight: 600;
+        font-size: 0.95rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .category-btn:hover {
+        background: rgba(255, 255, 255, 0.14);
+        border-color: rgba(255, 255, 255, 0.24);
+      }
+
+      .category-btn.active {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: #fff;
+        border-color: transparent;
+        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+      }
+
+      .no-results {
+        text-align: center;
+        color: rgba(255, 255, 255, 0.7);
+        padding: 30px 0;
+        font-size: 1rem;
+      }
+
+      .kits-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 24px;
+      }
+
+      .system-card {
+        position: relative;
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 16px;
+        overflow: hidden;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        opacity: 1 !important;
+        transform: none !important;
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+
+      .kits-page .system-card {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+
+      .system-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 16px 40px rgba(102, 126, 234, 0.18);
+      }
+
+      .system-preview {
+        height: 220px;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      .preview-image {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+        border-radius: 12px;
+        background: #fff;
+      }
+
+      .preview-frame {
+        width: 100%;
+        height: 100%;
+        border: 0;
+        display: block;
+        background: #fff;
+        border-radius: 12px;
+        pointer-events: none;
+      }
+
+      .system-info {
+        padding: 20px;
+        text-align: center;
+      }
+
+      .system-info h3 {
+        color: var(--logo-color);
+        margin-bottom: 14px;
+        font-size: 1.1rem;
+      }
+
+      .system-info p {
+        color: var(--bg-card-text);
+        font-size: 0.95rem;
+        opacity: 0.75;
+        line-height: 1.55;
+        margin-bottom: 16px;
+      }
+
+      .system-buttons {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+      }
+
+      .system-buttons button {
+        padding: 10px 14px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 700;
+        transition: all 0.25s ease;
+      }
+
+      .btn-open {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: #fff;
+      }
+
+      .btn-open:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+      }
+
+      .btn-get {
+        background: rgba(255, 255, 255, 0.08);
+        color: var(--logo-color);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .btn-get:hover {
+        background: rgba(255, 255, 255, 0.14);
+      }
+
+      .kit-tags {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-bottom: 16px;
+      }
+
+      .kit-tag {
+        font-size: 11px;
+        background: rgba(102, 126, 234, 0.12);
+        color: #667eea;
+        border: 1px solid rgba(102, 126, 234, 0.2);
+        padding: 3px 10px;
+        border-radius: 999px;
+      }
+
+      .kit-modal {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 2000;
+        background: rgba(0, 0, 0, 0.82);
+        backdrop-filter: blur(6px);
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+
+      .kit-modal.open {
+        display: flex;
+      }
+
+      .kit-modal-content {
+        background: linear-gradient(135deg, #0f1219, #131722);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 20px;
+        padding: 28px;
+        max-width: 1000px;
+        width: 100%;
+        max-height: 90vh;
+        overflow-y: auto;
+        position: relative;
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+      }
+
+      .close-modal {
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        color: #fff;
+        font-size: 24px;
+        cursor: pointer;
+      }
+
+      .kit-modal-title {
+        font-size: 22px;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 20px;
+        padding-right: 30px;
+      }
+
+      .kit-tabs {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 14px;
+        flex-wrap: wrap;
+      }
+
+      .tab-btn {
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.06);
+        color: #e5e7eb;
+        padding: 8px 16px;
+        border-radius: 999px;
+        cursor: pointer;
+        font-weight: 700;
+      }
+
+      .tab-btn.active {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: #fff;
+        border-color: transparent;
+      }
+
+      .kit-code-actions {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 12px;
+      }
+
+      .copy-kit-btn {
+        border: none;
+        border-radius: 8px;
+        padding: 8px 12px;
+        background: rgba(255, 255, 255, 0.08);
+        color: #fff;
+        cursor: pointer;
+        font-weight: 700;
+      }
+
+      .kit-code-output {
+        background: #0d1117;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 12px;
+        padding: 14px;
+        color: #e6edf3;
+        font-size: 13px;
+        line-height: 1.7;
+        overflow: auto;
+        white-space: pre-wrap;
+        word-break: break-word;
+        font-family: Consolas, monospace;
+        min-height: 260px;
+      }
+
+      .kit-copy-all {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 16px;
+        padding: 10px 16px;
+        border: none;
+        border-radius: 999px;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: #fff;
+        font-weight: 700;
+        cursor: pointer;
+        box-shadow: 0 8px 20px rgba(102, 126, 234, 0.28);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .kit-copy-all:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 10px 24px rgba(102, 126, 234, 0.34);
+      }
+
+      .kit-copy-all.copied {
+        background: linear-gradient(135deg, #22c55e, #16a34a);
+        box-shadow: 0 8px 20px rgba(34, 197, 94, 0.25);
+      }
+
+      .preview-frame-shell {
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 14px;
+        overflow: hidden;
+        background: linear-gradient(
+          135deg,
+          rgba(102, 126, 234, 0.16),
+          rgba(118, 75, 162, 0.18)
+        );
+      }
+
+      .preview-frame-shell iframe {
+        width: 100%;
+        min-height: 560px;
+        border: 0;
+        background: #fff;
+      }
+
+      .code-stack {
+        display: grid;
+        gap: 16px;
+      }
+
+      .code-card {
+        background: #161b22;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 12px;
+        padding: 14px;
+      }
+
+      .code-card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+
+      .code-card-label {
+        font-size: 12px;
+        color: #667eea;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+      }
+
+      .copy-btn {
+        padding: 8px 10px;
+        border: none;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.08);
+        color: #fff;
+        cursor: pointer;
+        font-size: 12px;
+        font-weight: 600;
+      }
+
+      .copy-btn:hover {
+        background: rgba(255, 255, 255, 0.14);
+      }
+
+      .code-card pre {
+        background: #0d1117;
+        border-radius: 8px;
+        padding: 12px;
+        font-size: 12px;
+        color: #e6edf3;
+        max-height: 220px;
+        overflow: auto;
+        white-space: pre-wrap;
+        word-break: break-word;
+        font-family: Consolas, monospace;
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" />
+    <link rel="canonical" href="https://webcodekit.dev/kits.html" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Component Kits | WebCodeKit",
+        "description": "Complete component kits combining buttons, cards, and forms for fast project starts.",
+        "url": "https://webcodekit.dev/kits.html"
+      }
+    </script>
+  </head>
+  <body>
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+      <div class="logo-hamburger-wrapper">
+        <button
+          class="hamburger"
+          id="hamburger"
+          aria-label="Toggle menu"
+          aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+        <a href="index.html" class="logo"
+          ><i class="fas fa-code" aria-hidden="true"></i> WebCodeKit</a
+        >
+      </div>
+      <ul class="nav-links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="buttons.html">Buttons</a></li>
+        <li><a href="cards.html">Cards</a></li>
+        <li><a href="forms.html">Forms</a></li>
+        <li><a href="systems.html">Systems</a></li>
+        <li><a href="kits.html" class="nav-active">Kits</a></li>
+        <li><a href="smart-ai.html" class="nav-ai-link">AI Assistant</a></li>
+        <li><a href="about.html">About Us</a></li>
+      </ul>
+      <a href="favorites.html" class="nav-fav-link" title="My Favorites"
+        ><i class="fas fa-heart"></i
+      ></a>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <ul
+      class="mobile-menu"
+      id="mobileMenu"
+      role="list"
+      aria-label="Mobile navigation">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="buttons.html">Buttons</a></li>
+      <li><a href="cards.html">Cards</a></li>
+      <li><a href="forms.html">Forms</a></li>
+      <li><a href="systems.html">Systems</a></li>
+      <li><a href="kits.html" class="nav-active">Kits</a></li>
+      <li><a href="smart-ai.html" class="mobile-ai-link">AI Assistant</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li class="menu-divider"></li>
+      <li>
+        <a href="favorites.html" class="mobile-fav-link"
+          ><i class="fas fa-heart"></i> My Favorites</a
+        >
+      </li>
+    </ul>
+
+    <div class="kits-page">
+      <div class="kits-header">
+        <h1>Component <span>Kits</span></h1>
+        <p>
+          Ready-made collections of matching components — grab a whole kit in
+          one click.
+        </p>
+      </div>
+
+      <div class="category-filters">
+        <button class="category-btn active" data-category="all">All</button>
+        <button class="category-btn" data-category="dashboard">
+          Dashboard
+        </button>
+        <button class="category-btn" data-category="landing">Landing</button>
+        <button class="category-btn" data-category="forms">Forms</button>
+        <button class="category-btn" data-category="shop">Shop</button>
+        <button class="category-btn" data-category="content">Content</button>
+        <button class="category-btn" data-category="portfolio">
+          Portfolio
+        </button>
+      </div>
+
+      <p id="noResults" class="no-results" style="display: none">
+        No matching kits found.
+      </p>
+      <div class="kits-grid" id="kitsGrid"></div>
+    </div>
+
+    <!-- Kit Detail Modal -->
+    <div class="kit-modal" id="kitModal">
+      <div class="kit-modal-content">
+        <span class="close-modal" onclick="closeKitModal()">&times;</span>
+        <div class="kit-modal-title" id="kitModalTitle"></div>
+        <div class="kit-items" id="kitModalItems"></div>
+        <button class="kit-copy-all" onclick="copyKitAll()">
+          <i class="fas fa-copy"></i> Copy All Kit Code
+        </button>
+      </div>
+    </div>
+
+    <button
+      class="theme-btn"
+      onclick="toggleTheme()"
+      title="Toggle theme"
+      aria-label="Toggle theme">
+      <i class="fa-regular fa-sun" id="theme-icon"></i>
+    </button>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"
+      defer></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"
+      defer></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"
+      defer></script>
+    <script src="theme-toggle.js" defer></script>
+    <script src="navbar.js" defer></script>
+    <script>
+      function escapeHtml(value) {
+        return String(value)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/\"/g, "&quot;")
+          .replace(/'/g, "&#39;");
+      }
+
+      function createPreviewImage(
+        title,
+        primary,
+        secondary,
+        accent,
+        badge,
+        hint,
+      ) {
+        const svg = `
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400">
+          <defs>
+            <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="${primary}" />
+              <stop offset="100%" stop-color="${secondary}" />
+            </linearGradient>
+          </defs>
+          <rect width="640" height="400" rx="30" fill="#050816" />
+          <rect x="24" y="24" width="592" height="352" rx="24" fill="#0f172a" />
+          <rect x="44" y="48" width="552" height="54" rx="16" fill="rgba(255,255,255,0.08)" />
+          <rect x="66" y="64" width="92" height="16" rx="8" fill="${primary}" />
+          <rect x="440" y="64" width="70" height="14" rx="7" fill="rgba(255,255,255,0.28)" />
+          <rect x="520" y="64" width="44" height="14" rx="7" fill="rgba(255,255,255,0.16)" />
+          <rect x="44" y="126" width="182" height="114" rx="18" fill="rgba(255,255,255,0.06)" />
+          <rect x="252" y="126" width="156" height="114" rx="18" fill="rgba(255,255,255,0.06)" />
+          <rect x="430" y="126" width="166" height="114" rx="18" fill="rgba(255,255,255,0.06)" />
+          <rect x="70" y="154" width="90" height="18" rx="9" fill="${accent}" />
+          <rect x="70" y="184" width="120" height="12" rx="6" fill="rgba(255,255,255,0.18)" />
+          <rect x="278" y="154" width="92" height="18" rx="9" fill="${primary}" />
+          <rect x="278" y="184" width="84" height="12" rx="6" fill="rgba(255,255,255,0.18)" />
+          <rect x="456" y="154" width="96" height="18" rx="9" fill="${secondary}" />
+          <rect x="456" y="184" width="112" height="12" rx="6" fill="rgba(255,255,255,0.18)" />
+          <rect x="44" y="270" width="552" height="84" rx="18" fill="rgba(255,255,255,0.04)" />
+          <rect x="66" y="292" width="176" height="16" rx="8" fill="url(#g)" />
+          <rect x="66" y="320" width="120" height="10" rx="5" fill="rgba(255,255,255,0.16)" />
+          <circle cx="520" cy="308" r="34" fill="${accent}" opacity="0.9" />
+          <text x="66" y="112" fill="#ffffff" font-family="Segoe UI, Arial" font-size="20" font-weight="700">${title}</text>
+          <text x="66" y="248" fill="rgba(255,255,255,0.75)" font-family="Segoe UI, Arial" font-size="14">${badge} • ${hint}</text>
+        </svg>`;
+        return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
+      }
+
+      function buildKit(
+        id,
+        name,
+        desc,
+        tags,
+        previewBg,
+        previewImage,
+        html,
+        css,
+        js,
+      ) {
+        return {
+          id,
+          name,
+          desc,
+          tags,
+          previewBg,
+          previewImage,
+          html,
+          css,
+          js,
+        };
+      }
+
+      const kits = [
+        buildKit(
+          "dashboard",
+          "Dashboard Kit",
+          "A polished admin-dashboard starter with nav, stats, and data widgets.",
+          ["Admin", "Dashboard", "Cards", "Dark"],
+          "linear-gradient(135deg,#1a1a2e,#16213e)",
+          "icons/kits/dashboard-kit.svg",
+          `<div class="dash-shell"><nav class="dash-nav"><a href="#" class="dash-logo">Dashboard</a><ul><li>Home</li><li>Users</li><li>Settings</li></ul></nav><div class="dash-grid"><div class="stat-card"><div class="stat-icon">📊</div><div><h3>Revenue</h3><p>$12.4k</p></div></div><div class="stat-card"><div class="stat-icon">👥</div><div><h3>Users</h3><p>1,240</p></div></div></div></div>`,
+          `.dash-shell{font-family:Segoe UI,sans-serif;background:#111827;color:#fff;padding:20px;border-radius:20px}.dash-nav{display:flex;justify-content:space-between;align-items:center;background:#1f2937;padding:16px 20px;border-radius:14px}.dash-logo{color:#fff;text-decoration:none;font-weight:700}.dash-nav ul{display:flex;gap:14px;list-style:none;color:#cbd5e1}.dash-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:16px}.stat-card{display:flex;align-items:center;gap:14px;background:#1f2937;padding:16px;border-radius:14px;border:1px solid rgba(255,255,255,0.08)}`,
+          `console.log('Dashboard kit loaded');`,
+        ),
+        buildKit(
+          "landing",
+          "Landing Page Kit",
+          "A modern hero section and feature block to launch your product quickly.",
+          ["Hero", "CTA", "Gradient", "Landing"],
+          "linear-gradient(135deg,#0f0c29,#302b63)",
+          "icons/kits/landing-kit.svg",
+          `<section class="hero-wrap"><div class="hero-copy"><h1>Launch Faster</h1><p>Build stunning UI without starting from scratch.</p><a href="#" class="hero-btn">Get Started</a></div><div class="hero-card">⚡ Fast · Secure · Scalable</div></section>`,
+          `.hero-wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:20px;align-items:center;padding:32px;background:linear-gradient(135deg,#0f0c29,#302b63);color:#fff;border-radius:24px}.hero-copy h1{font-size:2rem;margin-bottom:10px}.hero-btn{display:inline-block;margin-top:14px;padding:12px 18px;border-radius:999px;background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;text-decoration:none;font-weight:700}.hero-card{background:rgba(255,255,255,0.1);padding:20px;border-radius:16px;text-align:center}`,
+          `document.querySelector('.hero-btn')?.addEventListener('click',()=>alert('Started!'))`,
+        ),
+        buildKit(
+          "auth",
+          "Auth Kit",
+          "Full auth flow UI with login, register, and action controls.",
+          ["Auth", "Forms", "Login", "Register"],
+          "linear-gradient(135deg,#1a1a2e,#2d1b4e)",
+          "icons/kits/auth-kit.svg",
+          `<div class="auth-card"><h2>Welcome Back</h2><input type="email" placeholder="Email" /><input type="password" placeholder="Password" /><button>Login</button><a href="#">Forgot password?</a></div>`,
+          `.auth-card{max-width:340px;margin:auto;padding:28px;border-radius:18px;background:linear-gradient(135deg,#111827,#1f2937);color:#fff;box-shadow:0 20px 50px rgba(0,0,0,0.25)}.auth-card input{width:100%;padding:12px;margin:8px 0;border-radius:10px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.06);color:#fff}.auth-card button{width:100%;padding:12px;border:none;border-radius:10px;background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;font-weight:700;margin-top:8px}`,
+          `console.log('Auth kit ready');`,
+        ),
+        buildKit(
+          "ecommerce",
+          "E-Commerce Kit",
+          "A shop-ready product card with pricing and add-to-cart action.",
+          ["Shop", "Product", "Cart", "Badge"],
+          "linear-gradient(135deg,#0f2027,#203a43,#2c5364)",
+          "icons/kits/ecommerce-kit.svg",
+          `<div class="shop-card"><div class="shop-image"></div><div class="shop-body"><h3>Premium Headphones</h3><p>Immersive sound with comfort.</p><div class="shop-price">$129</div><button>Add to Cart</button></div></div>`,
+          `.shop-card{max-width:320px;background:#111827;color:#fff;border-radius:18px;overflow:hidden;box-shadow:0 16px 40px rgba(0,0,0,0.25)}.shop-image{height:140px;background:linear-gradient(135deg,#f59e0b,#ef4444)}.shop-body{padding:16px}.shop-price{font-size:1.2rem;font-weight:700;color:#34d399;margin:10px 0}.shop-body button{padding:10px 14px;border:none;border-radius:10px;background:#10b981;color:#fff;font-weight:700}`,
+          `document.querySelector('.shop-card button')?.addEventListener('click',()=>alert('Added to cart'))`,
+        ),
+        buildKit(
+          "blog",
+          "Blog Kit",
+          "Article-style card with title, tag, and author details.",
+          ["Blog", "Article", "Content", "Card"],
+          "linear-gradient(135deg,#1e293b,#0f172a)",
+          "icons/kits/blog-kit.svg",
+          `<article class="blog-card"><div class="blog-thumb"></div><div class="blog-body"><span class="blog-tag">Technology</span><h3>Why UI Systems Matter</h3><p>Start with clarity and consistency.</p><div class="blog-meta">By Sara · 5 min read</div></div></article>`,
+          `.blog-card{background:#111827;color:#fff;border-radius:18px;overflow:hidden;box-shadow:0 16px 40px rgba(0,0,0,0.2)}.blog-thumb{height:120px;background:linear-gradient(135deg,#667eea,#764ba2)}.blog-body{padding:16px}.blog-tag{display:inline-block;padding:5px 10px;border-radius:999px;background:rgba(102,126,234,0.18);color:#8b5cf6;font-size:0.75rem}`,
+          `console.log('Blog kit loaded');`,
+        ),
+        buildKit(
+          "portfolio",
+          "Portfolio Kit",
+          "A sleek personal portfolio card with projects and contact CTA.",
+          ["Portfolio", "Profile", "Contact", "Gradient"],
+          "linear-gradient(135deg,#0d0d1a,#1a0533)",
+          "icons/kits/portfolio-kit.svg",
+          `<div class="portfolio-card"><div class="avatar">JD</div><h3>John Doe</h3><p>Frontend Engineer</p><a href="#" class="port-btn">Hire Me</a></div>`,
+          `.portfolio-card{max-width:320px;padding:24px;border-radius:22px;text-align:center;background:linear-gradient(135deg,#111827,#1f2937);color:#fff}.avatar{width:70px;height:70px;border-radius:50%;display:grid;place-items:center;margin:0 auto 12px;background:linear-gradient(135deg,#667eea,#a855f7);font-weight:700;font-size:1.3rem}.port-btn{display:inline-block;margin-top:12px;padding:10px 16px;border-radius:999px;background:linear-gradient(135deg,#667eea,#a855f7);color:#fff;text-decoration:none}`,
+          `console.log('Portfolio kit ready');`,
+        ),
+        buildKit(
+          "pricing",
+          "Pricing Kit",
+          "A modern pricing card with highlighted plan and CTA.",
+          ["Pricing", "Cards", "Plan", "Marketing"],
+          "linear-gradient(135deg,#111827,#1f2937)",
+          createPreviewImage(
+            "Pricing Kit",
+            "#00c6ff",
+            "#0072ff",
+            "#f59e0b",
+            "Plan UI",
+            "Pricing Card",
+          ),
+          `<div class="price-card"><h3>Pro</h3><div class="price">$19<span>/mo</span></div><ul><li>Unlimited Projects</li><li>Priority Support</li></ul><button>Choose Plan</button></div>`,
+          `.price-card{max-width:300px;padding:24px;border-radius:20px;background:#111827;color:#fff;box-shadow:0 18px 40px rgba(0,0,0,0.25)}.price{font-size:2rem;font-weight:800;color:#38bdf8}.price-card button{margin-top:12px;padding:10px 16px;border:none;border-radius:10px;background:#38bdf8;color:#06202d;font-weight:700}`,
+          `console.log('Pricing kit loaded');`,
+        ),
+        buildKit(
+          "testimonial",
+          "Testimonial Kit",
+          "A social-proof section for reviews and client highlights.",
+          ["Testimonial", "Reviews", "Social", "Card"],
+          "linear-gradient(135deg,#111827,#0f172a)",
+          createPreviewImage(
+            "Testimonial Kit",
+            "#f59e0b",
+            "#ef4444",
+            "#10b981",
+            "Review UI",
+            "Feedback Card",
+          ),
+          `<div class="review-card"><p>“Amazing work and great attention to detail.”</p><div class="review-author">— Maya, Product Designer</div></div>`,
+          `.review-card{max-width:320px;padding:24px;border-radius:18px;background:#111827;color:#fff;border:1px solid rgba(255,255,255,0.08)}.review-author{margin-top:10px;color:#34d399;font-weight:700}`,
+          `console.log('Testimonial kit ready');`,
+        ),
+        buildKit(
+          "stats",
+          "Stats Kit",
+          "A clear KPI display card for metrics and analytics.",
+          ["Stats", "Analytics", "Metrics", "UI"],
+          "linear-gradient(135deg,#0f172a,#1e293b)",
+          createPreviewImage(
+            "Stats Kit",
+            "#00c6ff",
+            "#3b82f6",
+            "#34d399",
+            "Metrics",
+            "Analytics",
+          ),
+          `<div class="stats-card"><h3>Weekly Growth</h3><div class="big-num">+24%</div><p>Compared to last week</p></div>`,
+          `.stats-card{max-width:280px;padding:24px;border-radius:18px;background:#111827;color:#fff;text-align:center}.big-num{font-size:2rem;font-weight:800;color:#38bdf8;margin:8px 0}`,
+          `console.log('Stats kit loaded');`,
+        ),
+      ];
+
+      let currentKit = null;
+      let activeCategory = "all";
+
+      function getKitCategory(kit) {
+        switch (kit.id) {
+          case "auth":
+            return "forms";
+          case "ecommerce":
+            return "shop";
+          case "blog":
+            return "content";
+          case "portfolio":
+            return "portfolio";
+          case "landing":
+            return "landing";
+          default:
+            return "dashboard";
+        }
+      }
+
+      function buildPreviewSrcDoc(kit) {
+        const safeCss = String(kit.css).replace(/</g, "\\u003c");
+        const safeHtml = String(kit.html).replace(/</g, "\\u003c");
+        return `<!doctype html><html><head><style>${safeCss}</style></head><body><div style="padding:20px;min-height:100%;display:grid;place-items:center;background:linear-gradient(135deg,#0f172a,#111827);font-family:Segoe UI,sans-serif;">${safeHtml}</div></body></html>`;
+      }
+
+      function renderKits() {
+        const grid = document.getElementById("kitsGrid");
+        const noResults = document.getElementById("noResults");
+        const visibleKits = kits.filter(
+          (kit) =>
+            activeCategory === "all" || getKitCategory(kit) === activeCategory,
+        );
+
+        if (!visibleKits.length) {
+          noResults.style.display = "block";
+          grid.innerHTML = "";
+          return;
+        }
+
+        noResults.style.display = "none";
+        grid.innerHTML = visibleKits
+          .map((kit, index) => {
+            return `
+        <article class="system-card">
+          <div class="system-preview" style="background:${kit.previewBg}">
+            <img class="preview-image" src="${kit.previewImage}" alt="${escapeHtml(kit.name)} preview" />
+          </div>
+          <div class="system-info">
+            <h3>${escapeHtml(kit.name)}</h3>
+            <p>${escapeHtml(kit.desc)}</p>
+            <div class="kit-tags">${kit.tags.map((t) => `<span class="kit-tag">${escapeHtml(t)}</span>`).join("")}</div>
+            <div class="system-buttons">
+              <button class="btn-get" onclick="openKitCode('${kit.id}')">
+                <i class="fas fa-copy"></i> Get this code
+              </button>
+            </div>
+          </div>
+        </article>
+      `;
+          })
+          .join("");
+      }
+
+      window.openKitCode = function (id) {
+        currentKit = kits.find((k) => k.id === id);
+        if (!currentKit) return;
+        currentTab = "html";
+        document.getElementById("kitModalTitle").textContent = `${currentKit.name} Code`;
+        document.getElementById("kitModalItems").innerHTML = `
+        <div class="kit-tabs">
+          <button class="tab-btn active" data-type="html" onclick="showKitCode('html')">HTML</button>
+          <button class="tab-btn" data-type="css" onclick="showKitCode('css')">CSS</button>
+          <button class="tab-btn" data-type="js" onclick="showKitCode('js')">JS</button>
+        </div>
+        <div class="kit-code-actions">
+          <button class="copy-kit-btn" onclick="copyKitCode(this)">Copy</button>
+        </div>
+        <pre id="kitCodeOutput" class="kit-code-output"></pre>
+      `;
+        updateKitCodeDisplay();
+        document.getElementById("kitModal").classList.add("open");
+      };
+
+      window.showKitCode = function (type) {
+        currentTab = type;
+        document.querySelectorAll(".tab-btn").forEach((btn) => {
+          btn.classList.toggle("active", btn.dataset.type === type);
+        });
+        updateKitCodeDisplay();
+      };
+
+      function updateKitCodeDisplay() {
+        const output = document.getElementById("kitCodeOutput");
+        if (!output || !currentKit) return;
+        if (currentTab === "css") {
+          output.textContent = currentKit.css;
+        } else if (currentTab === "js") {
+          output.textContent = currentKit.js;
+        } else {
+          output.textContent = currentKit.html;
+        }
+      }
+
+      window.copyKitCode = function (btn) {
+        const code = document.getElementById("kitCodeOutput").textContent;
+        copyText(code, btn);
+      };
+
+      window.copyKitAll = function () {
+        const button = document.querySelector(".kit-copy-all");
+        if (!button || !currentKit) return;
+        const allCode = `HTML:\n${currentKit.html}\n\nCSS:\n${currentKit.css}\n\nJS:\n${currentKit.js}`;
+        copyText(allCode, button);
+      };
+
+      function openKit(id) {
+        currentKit = kits.find((k) => k.id === id);
+        if (!currentKit) return;
+        document.getElementById("kitModalTitle").textContent = currentKit.name;
+        document.getElementById("kitModalItems").innerHTML = `
+        <div class="preview-frame-shell">
+          <iframe srcdoc="<!doctype html><html><head><style>${escapeHtml(currentKit.css)}</style></head><body><div style='padding:24px;font-family:Segoe UI,sans-serif;background:linear-gradient(135deg,#0f172a,#111827);min-height:100vh;display:grid;place-items:center;'><div style='width:100%;max-width:720px;'>${currentKit.html}</div></body></html>"></iframe>
+        </div>
+      `;
+        document.getElementById("kitModal").classList.add("open");
+      }
+
+      function closeKitModal() {
+        document.getElementById("kitModal").classList.remove("open");
+        currentKit = null;
+      }
+
+      function copyText(value, btn) {
+        const text = String(value)
+          .replace(/&#39;/g, "'")
+          .replace(/&quot;/g, '"')
+          .replace(/&lt;/g, "<")
+          .replace(/&gt;/g, ">")
+          .replace(/&amp;/g, "&");
+
+        const showFeedback = (success) => {
+          const original = btn.innerHTML;
+          btn.classList.remove("copied", "error");
+          if (success) {
+            btn.classList.add("copied");
+            btn.innerHTML = '<i class="fas fa-check"></i> Copied';
+          } else {
+            btn.classList.add("error");
+            btn.innerHTML = '<i class="fas fa-exclamation-circle"></i> Copy failed';
+          }
+          setTimeout(() => {
+            btn.classList.remove("copied", "error");
+            btn.innerHTML = original;
+          }, 1800);
+        };
+
+        const fallbackCopy = () => {
+          const textarea = document.createElement("textarea");
+          textarea.value = text;
+          textarea.setAttribute("readonly", "");
+          textarea.style.position = "fixed";
+          textarea.style.left = "-9999px";
+          document.body.appendChild(textarea);
+          textarea.select();
+          try {
+            const copied = document.execCommand("copy");
+            showFeedback(copied);
+          } catch (error) {
+            showFeedback(false);
+          } finally {
+            document.body.removeChild(textarea);
+          }
+        };
+
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(() => showFeedback(true)).catch(() => fallbackCopy());
+        } else {
+          fallbackCopy();
+        }
+      }
+
+      function copyKit(id, btn) {
+        const kit = kits.find((k) => k.id === id);
+        if (!kit) return;
+        const allCode = `HTML:\n${kit.html}\n\nCSS:\n${kit.css}\n\nJS:\n${kit.js}`;
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard
+            .writeText(allCode)
+            .then(() => {
+              const orig = btn.innerHTML;
+              btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+              btn.style.background = "rgba(34,197,94,0.2)";
+              btn.style.color = "#22c55e";
+              setTimeout(() => {
+                btn.innerHTML = orig;
+                btn.style.background = "";
+                btn.style.color = "";
+              }, 2000);
+            })
+            .catch(() => {
+              btn.innerHTML =
+                '<i class="fas fa-exclamation-circle"></i> Failed';
+            });
+        } else {
+          btn.innerHTML =
+            '<i class="fas fa-exclamation-circle"></i> Copy unavailable';
+        }
+      }
+
+      document.querySelectorAll(".category-btn").forEach((button) => {
+        button.addEventListener("click", () => {
+          activeCategory = button.dataset.category;
+          document
+            .querySelectorAll(".category-btn")
+            .forEach((btn) => btn.classList.toggle("active", btn === button));
+          renderKits();
+        });
+      });
+
+      document
+        .getElementById("kitModal")
+        .addEventListener("click", function (e) {
+          if (e.target === this) closeKitModal();
+        });
+
+      renderKits();
+    </script>
+    <script src="search.js" defer></script>
+    <script src="lang.js" defer></script>
+    <script src="utils.js" defer></script>
+  </body>
+</html>
