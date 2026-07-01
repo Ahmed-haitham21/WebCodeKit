@@ -1,0 +1,284 @@
+/* ============================================
+   HOME PREVIEW SECTION — isolated styles
+   Cards, Forms, Buttons inside the slider
+   ============================================ */
+
+/* ---- Slider wrapper ---- */
+.slider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  height: 340px;
+  box-sizing: border-box;
+}
+
+/* ---- Arrow buttons ---- */
+.arrow {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(102, 126, 234, 0.15);
+  color: #667eea;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.25s, transform 0.25s, box-shadow 0.25s;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.25);
+}
+
+.arrow:hover {
+  background: rgba(102, 126, 234, 0.3);
+  transform: scale(1.1);
+  box-shadow: 0 4px 16px rgba(102, 126, 234, 0.35);
+}
+
+/* ---- Preview area ---- */
+.preview {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+/* ==========================
+   CARD PREVIEW
+========================== */
+#cardPreview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+/* Override any page-level card styles */
+#cardPreview .card,
+#cardPreview [class^="card-"] {
+  all: unset;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 220px;
+  padding: 20px 18px;
+  border-radius: 16px;
+  gap: 8px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Hide Get This Code and fav btn in preview */
+#cardPreview .get-code-btn,
+#cardPreview .fav-btn,
+#cardPreview .card-badge {
+  display: none !important;
+}
+
+/* Card icon */
+#cardPreview .card-icon {
+  font-size: 2rem;
+  margin-bottom: 6px;
+}
+
+/* Card text */
+#cardPreview .card h3 {
+  font-size: 0.92rem;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.3;
+}
+
+#cardPreview .card p {
+  font-size: 0.75rem;
+  margin: 0;
+  line-height: 1.4;
+  opacity: 0.85;
+}
+
+#cardPreview .card button:not(.get-code-btn):not(.fav-btn) {
+  all: unset;
+  box-sizing: border-box;
+  margin-top: 6px;
+  padding: 7px 18px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: rgba(255,255,255,0.2);
+  color: inherit;
+  border: 1px solid rgba(255,255,255,0.3);
+  transition: background 0.2s;
+}
+
+#cardPreview .card button:hover {
+  background: rgba(255,255,255,0.3);
+}
+
+/* --- Per-card dark backgrounds (matching cards.css themes) --- */
+#cardPreview .card-1  { background: linear-gradient(135deg, #1a1a2e, #16213e); color: #e2e8f0; }
+#cardPreview .card-2  { background: linear-gradient(135deg, #0f3460, #533483); color: #e2e8f0; }
+#cardPreview .card-3  { background: linear-gradient(135deg, #1a1a2e, #533483); color: #e2e8f0; }
+#cardPreview .card-4  { background: linear-gradient(135deg, #0d0d0d, #1a0533); color: #e2e8f0; }
+#cardPreview .card-5  { background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); color: #e2e8f0; }
+#cardPreview .card-6  { background: linear-gradient(135deg, #1a1a2e, #0f3460); color: #e2e8f0; }
+#cardPreview .card-7  { background: linear-gradient(135deg, #16213e, #0f3460); color: #e2e8f0; }
+#cardPreview .card-8  { background: linear-gradient(135deg, #0d0d1a, #1a0a2e); color: #00d9ff; text-shadow: 0 0 8px rgba(0,217,255,0.5); }
+
+/* ==========================
+   FORM PREVIEW
+========================== */
+#formPreview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+#formPreview .form-card {
+  width: 240px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: linear-gradient(145deg, #1e1e2f, #252540);
+  border: 1px solid #333;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+}
+
+#formPreview .form-preview {
+  padding: 16px;
+  background: linear-gradient(145deg, #1a1a2e, #0f0f1a);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+#formPreview .form-preview h3 {
+  color: #00d9ff;
+  font-size: 0.85rem;
+  margin: 0 0 10px 0;
+  font-weight: 700;
+}
+
+#formPreview .mini-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+#formPreview .mini-form input,
+#formPreview .mini-form textarea,
+#formPreview .mini-form select {
+  all: unset;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 7px;
+  font-size: 0.72rem;
+  background: #0d0d0d;
+  color: #fff;
+  border: 1px solid #444;
+}
+
+#formPreview .mini-form input::placeholder,
+#formPreview .mini-form textarea::placeholder {
+  color: #666;
+}
+
+#formPreview .mini-form textarea {
+  height: 44px;
+  resize: none;
+}
+
+#formPreview .preview-btn {
+  all: unset;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 8px;
+  border-radius: 7px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 4px;
+}
+
+/* Per-form button colors */
+#formPreview .login-form .preview-btn    { background: linear-gradient(135deg, #00d9ff, #0099cc); color: #0d0d0d; }
+#formPreview .register-form .preview-btn { background: linear-gradient(135deg, #667eea, #764ba2); color: #fff; }
+#formPreview .contact-form .preview-btn  { background: linear-gradient(135deg, #11998e, #38ef7d); color: #0d0d0d; }
+#formPreview .search-form .preview-btn   { background: linear-gradient(135deg, #f093fb, #f5576c); color: #fff; }
+
+#formPreview .form-actions {
+  display: flex;
+  gap: 8px;
+  padding: 10px 12px;
+  background: #1a1a2e;
+}
+
+#formPreview .open-btn,
+#formPreview .get-code-btn {
+  all: unset;
+  box-sizing: border-box;
+  flex: 1;
+  padding: 8px 6px;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#formPreview .open-btn {
+  background: linear-gradient(135deg, #00d9ff, #0099cc);
+  color: #0d0d0d;
+}
+
+#formPreview .get-code-btn {
+  background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+  color: #fff;
+}
+
+#formPreview .open-btn:hover,
+#formPreview .get-code-btn:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+/* Login form specific */
+#formPreview .login-preview {
+  background: linear-gradient(135deg, #1a1a2e, #2d1b4e);
+}
+#formPreview .login-form input {
+  border-right: 2px solid #00d9ff;
+}
+
+/* ==========================
+   BUTTON PREVIEW
+========================== */
+#buttonPreview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+/* Scale buttons down slightly to fit */
+#buttonPreview > * {
+  transform: scale(0.85);
+  transform-origin: center center;
+}

@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kit Code | WebCodeKit</title>
+    <link rel="stylesheet" href="navbar.min.css" />
+    <link rel="stylesheet" href="theme-variables.min.css" />
+    <link rel="stylesheet" href="modal-shared.css" />
+    <style>
+      body {
+        padding-top: 72px;
+        background: var(--body-bg);
+        color: var(--logo-color);
+      }
+      .code-page {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 24px 20px 60px;
+      }
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 20px;
+        color: #667eea;
+        font-weight: 700;
+        text-decoration: none;
+      }
+      .kit-title {
+        font-size: 2rem;
+        margin-bottom: 8px;
+      }
+      .kit-desc {
+        color: var(--bg-card-text);
+        margin-bottom: 24px;
+      }
+      .code-block {
+        background: #0f172a;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 16px;
+        padding: 16px;
+        margin-bottom: 18px;
+      }
+      .code-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+      .code-label {
+        font-size: 0.8rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #667eea;
+      }
+      .copy-btn {
+        border: none;
+        border-radius: 8px;
+        padding: 8px 12px;
+        background: rgba(255, 255, 255, 0.08);
+        color: #fff;
+        cursor: pointer;
+      }
+      pre {
+        margin: 0;
+        white-space: pre-wrap;
+        word-break: break-word;
+        color: #e5e7eb;
+        font-size: 0.92rem;
+        line-height: 1.6;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+      <div class="logo-hamburger-wrapper">
+        <a href="index.html" class="logo"
+          ><i class="fas fa-code" aria-hidden="true"></i> WebCodeKit</a
+        >
+      </div>
+      <ul class="nav-links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="kits.html">Kits</a></li>
+      </ul>
+    </nav>
+
+    <div class="code-page">
+      <a class="back-link" href="kits.html">← Back to kits</a>
+      <h1 class="kit-title" id="kitTitle">Kit Code</h1>
+      <p class="kit-desc" id="kitDesc">Select a kit to view its code.</p>
+      <div id="codeContainer"></div>
+    </div>
+
+    <script src="theme-toggle.js" defer></script>
+    <script src="navbar.js" defer></script>
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const kitId = params.get("id");
+
+      const kits = [
+        {
+          id: "dashboard",
+          name: "Dashboard Kit",
+          desc: "Admin dashboard starter",
+          html: `<div class="dash-shell"><nav class="dash-nav"><a href="#" class="dash-logo">Dashboard</a><ul><li>Home</li><li>Users</li><li>Settings</li></ul></nav><div class="dash-grid"><div class="stat-card"><div class="stat-icon">📊</div><div><h3>Revenue</h3><p>$12.4k</p></div></div><div class="stat-card"><div class="stat-icon">👥</div><div><h3>Users</h3><p>1,240</p></div></div></div></div>`,
+          css: `.dash-shell{font-family:Segoe UI,sans-serif;background:#111827;color:#fff;padding:20px;border-radius:20px}.dash-nav{display:flex;justify-content:space-between;align-items:center;background:#1f2937;padding:16px 20px;border-radius:14px}.dash-logo{color:#fff;text-decoration:none;font-weight:700}.dash-nav ul{display:flex;gap:14px;list-style:none;color:#cbd5e1}.dash-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:16px}.stat-card{display:flex;align-items:center;gap:14px;background:#1f2937;padding:16px;border-radius:14px;border:1px solid rgba(255,255,255,0.08)}`,
+          js: `console.log('Dashboard kit loaded');`,
+        },
+        {
+          id: "landing",
+          name: "Landing Page Kit",
+          desc: "Hero and CTA landing starter",
+          html: `<section class="hero-wrap"><div class="hero-copy"><h1>Launch Faster</h1><p>Build stunning UI without starting from scratch.</p><a href="#" class="hero-btn">Get Started</a></div><div class="hero-card">⚡ Fast · Secure · Scalable</div></section>`,
+          css: `.hero-wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:20px;align-items:center;padding:32px;background:linear-gradient(135deg,#0f0c29,#302b63);color:#fff;border-radius:24px}.hero-copy h1{font-size:2rem;margin-bottom:10px}.hero-btn{display:inline-block;margin-top:14px;padding:12px 18px;border-radius:999px;background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;text-decoration:none;font-weight:700}.hero-card{background:rgba(255,255,255,0.1);padding:20px;border-radius:16px;text-align:center}`,
+          js: `document.querySelector('.hero-btn')?.addEventListener('click',()=>alert('Started!'))`,
+        },
+        {
+          id: "auth",
+          name: "Auth Kit",
+          desc: "Login and register UI",
+          html: `<div class="auth-card"><h2>Welcome Back</h2><input type="email" placeholder="Email" /><input type="password" placeholder="Password" /><button>Login</button><a href="#">Forgot password?</a></div>`,
+          css: `.auth-card{max-width:340px;margin:auto;padding:28px;border-radius:18px;background:linear-gradient(135deg,#111827,#1f2937);color:#fff;box-shadow:0 20px 50px rgba(0,0,0,0.25)}.auth-card input{width:100%;padding:12px;margin:8px 0;border-radius:10px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.06);color:#fff}.auth-card button{width:100%;padding:12px;border:none;border-radius:10px;background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;font-weight:700;margin-top:8px}`,
+          js: `console.log('Auth kit ready');`,
+        },
+        {
+          id: "ecommerce",
+          name: "E-Commerce Kit",
+          desc: "Shop card starter",
+          html: `<div class="shop-card"><div class="shop-image"></div><div class="shop-body"><h3>Premium Headphones</h3><p>Immersive sound with comfort.</p><div class="shop-price">$129</div><button>Add to Cart</button></div></div>`,
+          css: `.shop-card{max-width:320px;background:#111827;color:#fff;border-radius:18px;overflow:hidden;box-shadow:0 16px 40px rgba(0,0,0,0.25)}.shop-image{height:140px;background:linear-gradient(135deg,#f59e0b,#ef4444)}.shop-body{padding:16px}.shop-price{font-size:1.2rem;font-weight:700;color:#34d399;margin:10px 0}.shop-body button{padding:10px 14px;border:none;border-radius:10px;background:#10b981;color:#fff;font-weight:700}`,
+          js: `document.querySelector('.shop-card button')?.addEventListener('click',()=>alert('Added to cart'))`,
+        },
+        {
+          id: "blog",
+          name: "Blog Kit",
+          desc: "Article card starter",
+          html: `<article class="blog-card"><div class="blog-thumb"></div><div class="blog-body"><span class="blog-tag">Technology</span><h3>Why UI Systems Matter</h3><p>Start with clarity and consistency.</p><div class="blog-meta">By Sara · 5 min read</div></div></article>`,
+          css: `.blog-card{background:#111827;color:#fff;border-radius:18px;overflow:hidden;box-shadow:0 16px 40px rgba(0,0,0,0.2)}.blog-thumb{height:120px;background:linear-gradient(135deg,#667eea,#764ba2)}.blog-body{padding:16px}.blog-tag{display:inline-block;padding:5px 10px;border-radius:999px;background:rgba(102,126,234,0.18);color:#8b5cf6;font-size:0.75rem}`,
+          js: `console.log('Blog kit loaded');`,
+        },
+        {
+          id: "portfolio",
+          name: "Portfolio Kit",
+          desc: "Portfolio and contact card",
+          html: `<div class="portfolio-card"><div class="avatar">JD</div><h3>John Doe</h3><p>Frontend Engineer</p><a href="#" class="port-btn">Hire Me</a></div>`,
+          css: `.portfolio-card{max-width:320px;padding:24px;border-radius:22px;text-align:center;background:linear-gradient(135deg,#111827,#1f2937);color:#fff}.avatar{width:70px;height:70px;border-radius:50%;display:grid;place-items:center;margin:0 auto 12px;background:linear-gradient(135deg,#667eea,#a855f7);font-weight:700;font-size:1.3rem}.port-btn{display:inline-block;margin-top:12px;padding:10px 16px;border-radius:999px;background:linear-gradient(135deg,#667eea,#a855f7);color:#fff;text-decoration:none}`,
+          js: `console.log('Portfolio kit ready');`,
+        },
+        {
+          id: "pricing",
+          name: "Pricing Kit",
+          desc: "Pricing card starter",
+          html: `<div class="price-card"><h3>Pro</h3><div class="price">$19<span>/mo</span></div><ul><li>Unlimited Projects</li><li>Priority Support</li></ul><button>Choose Plan</button></div>`,
+          css: `.price-card{max-width:300px;padding:24px;border-radius:20px;background:#111827;color:#fff;box-shadow:0 18px 40px rgba(0,0,0,0.25)}.price{font-size:2rem;font-weight:800;color:#38bdf8}.price-card button{margin-top:12px;padding:10px 16px;border:none;border-radius:10px;background:#38bdf8;color:#06202d;font-weight:700}`,
+          js: `console.log('Pricing kit loaded');`,
+        },
+        {
+          id: "testimonial",
+          name: "Testimonial Kit",
+          desc: "Reviews and social proof",
+          html: `<div class="review-card"><p>“Amazing work and great attention to detail.”</p><div class="review-author">— Maya, Product Designer</div></div>`,
+          css: `.review-card{max-width:320px;padding:24px;border-radius:18px;background:#111827;color:#fff;border:1px solid rgba(255,255,255,0.08)}.review-author{margin-top:10px;color:#34d399;font-weight:700}`,
+          js: `console.log('Testimonial kit ready');`,
+        },
+        {
+          id: "stats",
+          name: "Stats Kit",
+          desc: "Metrics card starter",
+          html: `<div class="stats-card"><h3>Weekly Growth</h3><div class="big-num">+24%</div><p>Compared to last week</p></div>`,
+          css: `.stats-card{max-width:280px;padding:24px;border-radius:18px;background:#111827;color:#fff;text-align:center}.big-num{font-size:2rem;font-weight:800;color:#38bdf8;margin:8px 0}`,
+          js: `console.log('Stats kit loaded');`,
+        },
+      ];
+
+      const kit = kits.find((item) => item.id === kitId) || kits[0];
+      document.getElementById("kitTitle").textContent = kit.name;
+      document.getElementById("kitDesc").textContent = kit.desc;
+
+      function renderCodeBlock(label, code) {
+        return `
+          <div class="code-block">
+            <div class="code-head">
+              <div class="code-label">${label}</div>
+              <button class="copy-btn" onclick="copyText(this, ${JSON.stringify(code)})">Copy</button>
+            </div>
+            <pre>${code}</pre>
+          </div>`;
+      }
+
+      function copyText(btn, text) {
+        navigator.clipboard.writeText(text).then(() => {
+          const original = btn.textContent;
+          btn.textContent = "Copied";
+          setTimeout(() => {
+            btn.textContent = original;
+          }, 1400);
+        });
+      }
+
+      document.getElementById("codeContainer").innerHTML = [
+        renderCodeBlock("HTML", kit.html),
+        renderCodeBlock("CSS", kit.css),
+        renderCodeBlock("JS", kit.js),
+      ].join("");
+    </script>
+  </body>
+</html>
