@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WebCodeKit - Free Ready-Made UI Components Library</title>
+    <meta
+      name="description"
+      content="WebCodeKit is a free UI component library with 100+ buttons, 40 cards, 24 forms, and ready-made systems you can copy and use in your web projects instantly." />
+    <meta property="og:title" content="WebCodeKit - Free Ready-Made UI Components Library" />
+    <meta
+      property="og:description"
+      content="Browse and copy 100+ buttons, 40 cards, 24 forms, and ready-made systems for your next web project." />
+    <meta property="og:type" content="website" />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="theme-variables.min.css" />
+    <link rel="stylesheet" href="buttons.min.css" />
+    <link rel="stylesheet" href="cards.min.css" />
+    <link rel="stylesheet" href="forms.min.css" />
+    <link rel="stylesheet" href="navbar.min.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo-hamburger-wrapper">
+        <button class="hamburger" id="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <a href="index.html" class="logo">
+          <i class="fas fa-code"></i>
+          WebCodeKit
+        </a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="buttons.html">Buttons</a></li>
+        <li><a href="cards.html">Cards</a></li>
+        <li><a href="forms.html">Forms</a></li>
+        <li><a href="systems.html">Systems</a></li>
+        <li><a href="about.html">About Us</a></li>
+      </ul>
+      <a href="favorites.html" class="nav-fav-link" title="My Favorites">
+        <i class="fas fa-heart"></i>
+      </a>
+    </nav>
+
+    <ul class="mobile-menu" id="mobileMenu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="buttons.html">Buttons</a></li>
+      <li><a href="cards.html">Cards</a></li>
+      <li><a href="forms.html">Forms</a></li>
+      <li><a href="systems.html">Systems</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="favorites.html"><i class="fas fa-heart"></i> My Favorites</a></li>
+    </ul>
+
+    <!-- Theme Toggle Button - Outside Navbar -->
+    <button
+      class="theme-btn"
+      onclick="toggleTheme()"
+      title="Toggle Light/Dark Mode">
+      <i class="fa-regular fa-sun" id="theme-icon"></i>
+    </button>
+
+    <div class="body1">
+      <h3>Just For you</h3>
+      <h2>What is the purpose of the website?</h2>
+      <span>Your Partner in Professional Web Development</span>
+    </div>
+    <!--                      -->
+    <section class="components">
+      <div class="container">
+        <h2 class="components-title">Ready-Made UI Components</h2>
+
+        <p class="components-desc">
+          Explore modern UI components ready to use in your projects. Browse
+          different styles of buttons, cards, and forms.
+        </p>
+
+        <div class="components-grid">
+          <!-- Buttons Slider -->
+
+          <div class="component-box">
+            <h3>Buttons</h3>
+
+            <div class="slider">
+              <button class="arrow" onclick="prevButton()">&#10094;</button>
+
+              <div class="preview" id="buttonPreview"></div>
+
+              <button class="arrow" onclick="nextButton()">&#10095;</button>
+            </div>
+          </div>
+
+          <!-- Cards Slider -->
+
+          <div class="component-box">
+            <h3>Cards</h3>
+
+            <div class="slider">
+              <button class="arrow" onclick="prevCard()">&#10094;</button>
+
+              <div class="preview" id="cardPreview"></div>
+
+              <button class="arrow" onclick="nextCard()">&#10095;</button>
+            </div>
+          </div>
+
+          <!-- Forms Slider -->
+
+          <div class="component-box">
+            <h3>Forms</h3>
+
+            <div class="slider">
+              <button class="arrow" onclick="prevform()">&#10094;</button>
+
+              <div class="preview" id="formPreview"></div>
+
+              <button class="arrow" onclick="nextform()">&#10095;</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- How It Works Section -->
+    <section class="how-it-works">
+      <h2>How It Works</h2>
+      <div class="steps">
+        <div class="step animate">
+          <div class="icon">🔘</div>
+          <h3>Ready & Premium Buttons</h3>
+          <p>
+            Get high-quality buttons ready to use with clean code for your
+            projects instantly.
+          </p>
+        </div>
+        <div class="step animate">
+          <div class="icon">📇</div>
+          <h3>New & Unique Cards</h3>
+          <p>
+            Access beautifully designed cards with premium quality, ready to
+            integrate directly.
+          </p>
+        </div>
+        <div class="step animate">
+          <div class="icon">📝</div>
+          <h3>Premium Forms</h3>
+          <p>
+            Use ready-made, high-quality forms with code provided for seamless
+            integration.
+          </p>
+        </div>
+        <div class="step animate">
+          <div class="icon">⚡</div>
+          <h3>Ready Systems</h3>
+          <p>
+            We provide initial ready-to-use systems so users can choose a base
+            design. Then we customize it with all adjustments to suit their
+            project needs.
+          </p>
+        </div>
+      </div>
+    </section>
+    <!-- Systems Ready Section -->
+    <section class="systems-ready">
+      <h2>Ready Systems</h2>
+      <p class="systems-ready-desc">
+        A sneak peek at some of the 24 ready-made systems waiting for you.
+      </p>
+      <div class="systems-grid">
+        <div class="system-card animate">
+          <div class="system-icon"><i class="fas fa-right-to-bracket"></i></div>
+          <h3>Login System</h3>
+          <p>A complete, ready-to-use login form system.</p>
+          <a href="systems.html" class="btn">Select System</a>
+        </div>
+        <div class="system-card animate">
+          <div class="system-icon"><i class="fas fa-calculator"></i></div>
+          <h3>Calculator System</h3>
+          <p>A functional calculator system ready to drop into your project.</p>
+          <a href="systems.html" class="btn">Select System</a>
+        </div>
+        <div class="system-card animate">
+          <div class="system-icon"><i class="fas fa-list-check"></i></div>
+          <h3>To-Do List System</h3>
+          <p>A task management system with add, complete, and delete actions.</p>
+          <a href="systems.html" class="btn">Select System</a>
+        </div>
+        <div class="system-card animate">
+          <div class="system-icon"><i class="fas fa-images"></i></div>
+          <h3>Image Gallery System</h3>
+          <p>A responsive image gallery system, ready to showcase your content.</p>
+          <a href="systems.html" class="btn">Select System</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <h2>Start Building Your Project Today</h2>
+      <a
+        href="https://mail.google.com/mail/?view=cm&to=ahmed.haitham2005@icloud.com&su=Custom%20System%20Request%20-%20WebCodeKit&body=Hi%20Ahmed,%0A%0AI%27m%20interested%20in%20a%20custom%20system%20from%20WebCodeKit.%0A%0APlease%20contact%20me%20to%20discuss%20details.%0A%0AThanks!"
+        class="cta-btn"
+        >Request Your Custom System</a
+      >
+    </section>
+    <footer class="footer">
+      <div class="footer-container">
+        <!-- About -->
+        <div class="footer-col">
+          <h3>UI Library</h3>
+          <p>
+            We provide ready-to-use buttons, cards, forms, and customizable
+            systems to help developers build faster and better.
+          </p>
+        </div>
+
+        <!-- Components -->
+        <div class="footer-col">
+          <h3>Components</h3>
+          <ul>
+            <li><a href="buttons.html">Buttons</a></li>
+            <li><a href="cards.html">Cards</a></li>
+            <li><a href="forms.html">Forms</a></li>
+          </ul>
+        </div>
+
+        <!-- Systems -->
+        <div class="footer-col">
+          <h3>Systems</h3>
+          <ul>
+            <li><a href="systems.html">Custom System</a></li>
+          </ul>
+        </div>
+
+        <!-- Social -->
+        <div class="footer-col">
+          <h3>Follow Us</h3>
+          <div class="social-icons">
+            <a href="https://github.com/Ahmed-haitham21"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom -->
+      <div class="footer-bottom">
+        <p>© 2026 UI Library. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="navbar.js" defer></script>
+    <script src="theme-toggle.js" defer></script>
+    <script src="home.js" defer></script>
+  </body>
+</html>
